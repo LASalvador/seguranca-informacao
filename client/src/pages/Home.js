@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
+import Button from '@material-ui/core/Button';
 
 export default class Chat extends Component {
     render () {
         return (
-            <h1>Page Home</h1>
+            <Button variant="contained" color="primary">
+                  Olá Mundo
+            </Button>
         )
     }
 }
