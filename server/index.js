@@ -8,4 +8,5 @@ app.get('/', (req, res) => {
   res.send('Salve KKKKKKKKKKKK!');
 });
 
+console.log('Rodando na porta 8020');
 app.listen(8020);
