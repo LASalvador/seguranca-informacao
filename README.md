@@ -3,7 +3,7 @@ Aplicação para auxiliar o DPO a exercer suas atividades de acordo com LGPD. A 
 
 ## Integrantes
 * [Gabriel Carvalho](https://github.com/Gamebielo)
-* [Lucas Salvador](https://github.com/lrsonnewend)
-* [Lucas Ribeiro](https://github.com/LASalvador)
-* Mayara Bŕigida
+* [Lucas Salvador](https://github.com/LASalvador)
+* [Lucas Ribeiro](https://github.com/lrsonnewend)
+* [Mayara Brígida] (https://github.com/mayaramedeiros)
 * [Paulo Henrique Correia](https://github.com/PauloHenrique7010)
