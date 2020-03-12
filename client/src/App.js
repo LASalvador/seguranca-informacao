@@ -3,14 +3,16 @@ import Routes from './route';
 import { BrowserRouter } from 'react-router-dom';
 
 // Components Import
-// import Header from './components/header';
+import Header from './components/header';
 
 function App() {
-  // <Header />
   return (
-    <BrowserRouter>
-      <Routes />
-    </BrowserRouter>
+    <div>
+      <Header />
+      <BrowserRouter>
+        <Routes />
+      </BrowserRouter>
+    </div>
   );
 }
 
