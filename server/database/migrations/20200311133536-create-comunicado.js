@@ -46,12 +46,8 @@ module.exports = {
   },
 
   down: (queryInterface, Sequelize) => {
-    /*
-      Add reverting commands here.
-      Return a promise to correctly handle asynchronicity.
+   
+      return queryInterface.dropTable('Comunicado');
 
-      Example:
-      return queryInterface.dropTable('users');
-    */
   }
 };
