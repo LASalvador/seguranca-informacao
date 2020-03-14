@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 function Blog(props) {
   const conteudo = props.cardList.map((cardList) =>
@@ -15,7 +15,7 @@ function Blog(props) {
   );
 }
 const cardList = [
-  {id: 1, name: 'Mayara', data: '12/02/2020'},
+  {id: 1, title: 'Mayara', content: '12/02/2020'},
   {id: 2, title: 'Installation', content: 'Mayara'}
 ];
 
