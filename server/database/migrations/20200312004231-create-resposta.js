@@ -1,38 +1,32 @@
 'use strict';
 module.exports = {
-  /* cod_resposta INTEGER PRIMARY KEY AUTOINCREMENT,
-  conteudo_resposta TEXT,
-  autor_resposta varchar(100),
-  data_criado DATETIME,
-  data_atualizado DATETIME */
-
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable('Resposta', {
       id_resposta: {
         allowNull: false,
         auto_increment: true,
         primaryKey: true,
-        type: DataType.INTEGER,
+        type: Sequelize.INTEGER,
       },
 
       conteudo_resposta: {
         allowNull: false,
-        type: Sequelize.String(100),
+        type: Sequelize.STRING,
       },
 
       autor_resposta: {
         allowNull: false,
-        type: Sequelize.String(100),
+        type: Sequelize.STRING,
       },
 
       data_criado: {
         allowNull: false,
-        type: Date,
+        type: Sequelize.DATE,
       },
 
       data_atualizado: {
         allowNull: false,
-        type: Date,
+        type: Sequelize.DATE,
       },
 
     });

@@ -13,32 +13,32 @@ module.exports = {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: DataTypes.INTEGER,
+        type: Sequelize.INTEGER,
       },
       
       data_comunicado:{
         allowNull: false,
-        type: DataType.Date,
+        type: Sequelize.DATE,
       },
 
       responsavel_comunicado:{
         allowNull: false,
-        type: Sequelize.String(100),
+        type: Sequelize.STRING,
       },
 
       email_comunicado:{
         allowNull: false,
-        type: Sequelize.String(100),
+        type: Sequelize.STRING,
       },
 
       data_criado:{
         allowNull: false,
-        type: DataType.Date,
+        type: Sequelize.DATE,
       },
 
       data_atualizado:{
         allowNull: false,
-        type: DataType.Date,
+        type: Sequelize.DATE,
       },
     });
 

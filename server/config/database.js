@@ -1,4 +1,4 @@
 module.exports = {
-  storage: '../db/AppDB.db',
+  database: '../db/AppDB.db',
   dialect: 'sqlite',
 }
