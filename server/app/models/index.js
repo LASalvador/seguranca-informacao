@@ -2,8 +2,8 @@ const fs = require('fs');
 const path = require('path');
 const Sequelize = require('sequelize');
 const config = require('../../config/database.js');
-const Comunicado = require('comunicado');
-const Resposta = require('resposta');
+const { comunicado } = require('./comunicado');
+const { resposta } = require('./resposta');
 
 const db = {};
 const sequelize = new Sequelize(config);
@@ -26,7 +26,7 @@ db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
 //CRIANDO TESTE COMUNICADO
-Comunicado.create({responsavel_comunicado: 'Teste1',
+comunicado.Sequelize.create ({responsavel_comunicado: 'Teste1',
                   email_comunicado: 'teste@gmail.com',
                   data_comunicado: '2020-01-22',
                   data_criado: '2020-01-20',
@@ -34,7 +34,7 @@ Comunicado.create({responsavel_comunicado: 'Teste1',
 
 
 //CRIANDO TESTE RESPOSTA
-Resposta.create({conteudo_resposta: 'Teste2',
+resposta.Sequelize.create({conteudo_resposta: 'Teste2',
                 autor_resposta: 'tester2',
                 data_criado: '2019-08-11',
                 data_atualizado: '2020-01-01'});

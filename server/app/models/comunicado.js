@@ -1,6 +1,3 @@
-import {sequelize, Sequelize} from ".";
-import {DataTypes} from "sequelize/types";
-
 module.exports = (sequelize, DataTypes) => {
     const Comunicado = sequelize.define('Comunicado', {
         /*cod_comunicado integer PRIMARY KEY AUTOINCREMENT,
@@ -10,12 +7,12 @@ module.exports = (sequelize, DataTypes) => {
         data_criado DATETIME,
         data_atualizado DATETIME*/
 
-        id_comunicado: Sequelize.INTEGER,
-        responsavel_comunicado: Sequelize.STRING,
-        email_comunicado: Sequelize.DATE,
-        data_comunicado: Sequelize.DATE,
-        data_criado: Sequelize.DATE,
-        data_atualizado: Sequelize.DATE,
+        id_comunicado: DataTypes.INTEGER,
+        responsavel_comunicado: DataTypes.STRING,
+        email_comunicado: DataTypes.DATE,
+        data_comunicado: DataTypes.DATE,
+        data_criado: DataTypes.DATE,
+        data_atualizado: DataTypes.DATE,
     });
 
     return Comunicado;

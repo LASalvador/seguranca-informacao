@@ -1,5 +1,3 @@
-import {sequelize, Sequelize} from ".";
-
 module.exports = (sequelize, DataTypes) => {
     const Resposta = sequelize.define('Resposta', {
         /* cod_resposta INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -8,11 +6,11 @@ module.exports = (sequelize, DataTypes) => {
         data_criado DATETIME,
         data_atualizado DATETIME */
 
-        id_resposta: Sequelize.INTEGER,
-        conteudo_resposta: Sequelize.STRING,
-        autor_resposta: Sequelize.STRING,
-        data_criado: Sequelize.DATE,
-        data_atualizado: Sequelize.DATE,
+        id_resposta: DataTypes.INTEGER,
+        DataTypes: DataTypes.STRING,
+        autor_resposta: DataTypes.STRING,
+        data_criado: DataTypes.DATE,
+        data_atualizado: DataTypes.DATE,
     });
 
     return Resposta;
