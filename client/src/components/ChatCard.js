@@ -8,6 +8,10 @@ const useStyles = makeStyles({
   root: {
     minWidth: 275,
     marginBottom: 10,
+    background: props =>
+      props.author === props.dpo 
+      ? '0 3px 5px 2px rgba(255, 105, 135, .3)'
+      : '0 3px 5px 2px rgba(33, 203, 243, .3)',
   },
   title: {
     fontSize: 14,
@@ -15,11 +19,11 @@ const useStyles = makeStyles({
 });
 
 export default function ChatCard(props) {
-  const classes = useStyles();
+  const classes = useStyles(props);
 
   return (
     <Card className={classes.root}>
-      <CardContent>
+      <CardContent>                               
         <Typography className={classes.title} color="textSecondary" gutterBottom>
           {props.author}
         </Typography>
