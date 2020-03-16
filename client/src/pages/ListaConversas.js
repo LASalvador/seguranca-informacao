@@ -2,10 +2,13 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
+import {Link} from 'react-router-dom';
 
 function Blog(props) {
   const classes = useStyles();
   const conteudo = props.cardList.map((cardList) =>
+  <header>
+    <Link to="/chat">
     <Card className={classes.root}>
       <CardContent>
         <div key={cardList.id}>
@@ -14,6 +17,8 @@ function Blog(props) {
         </div>
       </CardContent>
     </Card>
+    </Link>
+  </header>
   );
   return (
       <div>
@@ -23,7 +28,7 @@ function Blog(props) {
 }
 const cardList = [
   {id: 1, title: 'Mayara', dia: '12/02/2020', hora:'12h30'},
-  {id: 2, title: 'Lucas',  dia: '13/02/2020', hora:'15h30'}
+  {id: 2, title: 'Lucas',  dia: '13/02/202', hora:'15h30'}
 ];
 
 const useStyles = makeStyles({
