@@ -1,43 +1,40 @@
 import React, { Component } from 'react';
-import { styled } from '@material-ui/core/styles';
+import TextField from '@material-ui/core/TextField';
 import ChatCard from '../components/ChatCard';
 
-
-const ModifiedCard = styled(({hash, ...other}) => <ChatCard {...other} />)({
-    background: props => 
-    props.hash ? 
-    '#e4e4e4'
-    : 'rgb(204,216,255)'
-})
 
 export default class Chat extends Component {
     state = {
         list: [],
-        hash: []
+        dpo: []
     }
 
     async componentDidMount (){
         this.setState({list: [
             {author: 'joao', content: 'maria'},
             {author: 'joao2', content: 'maria2'},
-            {author: 'joao3', content: 'maria3'},
+            {author: 'joao', content: 'maria3'},
             {author: 'joao4', content: 'maria4'},
         ]})
-        this.setState({hash: 'aaaaaaaaaaaaaaaaaaaa'})
+        this.setState({dpo: 'joao'})
     }
 
     render () {
         return (
             <section>
                 {
-                    this.state.list.map((msg) => {
-                       return <ChatCard 
-                            author={msg.author} 
-                            content={msg.content}
-                        />
+                    this.state.list.map((msg, index) => {
+                       return <ChatCard
+                                key={index} 
+                                author={msg.author}
+                                content={msg.content}
+                                dpo={this.state.dpo}
+                             />
                     })
                 }
-
+                <form noValidate autoComplete="off">
+                    <TextField id="standard-basic" label="Mensagem" />
+                </form>
             </section>
         );
     }
