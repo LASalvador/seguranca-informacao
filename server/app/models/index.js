@@ -59,7 +59,6 @@ db.serialize(() => {
     });
   });
  
-
  /* 
 db.serialize(() => {
   db.each(`SELECT u.cod_comunicado
