@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import TextField from '@material-ui/core/TextField';
 import ChatCard from '../components/ChatCard';
 
 
@@ -31,7 +32,9 @@ export default class Chat extends Component {
                              />
                     })
                 }
-
+                <form noValidate autoComplete="off">
+                    <TextField id="standard-basic" label="Mensagem" />
+                </form>
             </section>
         );
     }
