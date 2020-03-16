@@ -7,11 +7,18 @@ module.exports = (sequelize, DataTypes) => {
         data_atualizado DATETIME */
 
         id_resposta: DataTypes.INTEGER,
-        DataTypes: DataTypes.STRING,
+        conteudo_resposta: DataTypes.STRING,
         autor_resposta: DataTypes.STRING,
         data_criado: DataTypes.DATE,
         data_atualizado: DataTypes.DATE,
     });
 
-    return Resposta;
+    Resposta.sync({force: true}).then(function () {
+        return Resposta.create({
+            conteudo_resposta: 'Teste2',
+            autor_resposta: 'tester2',
+            data_criado: '2019-08-11',
+            data_atualizado: '2020-01-01'
+        });
+    });
 }

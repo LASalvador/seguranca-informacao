@@ -4,39 +4,76 @@ const Sequelize = require('sequelize');
 const config = require('../../config/database.js');
 const { comunicado } = require('./comunicado');
 const { resposta } = require('./resposta');
+/* const db = {};
+ */const sequelize = new Sequelize(config);
 
-const db = {};
-const sequelize = new Sequelize(config);
-
-fs
+/* fs
   .readdirSync(__dirname)
   .filter(file => (file.indexOf('.') !== 0) && (file !== path.basename(__filename)) && (file.slice(-3) === '.js'))
   .forEach((file) => {
     const model = sequelize.import(path.join(__dirname, file));
-    db[model.name] = model;
   });
 
 Object.keys(db).forEach((modelName) => {
   if (db[modelName].associate) {
     db[modelName].associate(db);
   }
-});
+}); */
 
-db.sequelize = sequelize;
+/* db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
-//CRIANDO TESTE COMUNICADO
-comunicado.Sequelize.create ({responsavel_comunicado: 'Teste1',
-                  email_comunicado: 'teste@gmail.com',
-                  data_comunicado: '2020-01-22',
-                  data_criado: '2020-01-20',
-                  data_atualizado: '2020-01-30'});
+module.exports = db; */
 
+const sqlite3 = require('sqlite3').verbose();
+ 
+// open the database
+let db = new sqlite3.Database('../../db/AppDB.db', sqlite3.OPEN_READWRITE, (err) => {
+  if (err) {
+    console.error(err.message);
+  }
+  console.log('Conectado ao banco.');
+});
 
-//CRIANDO TESTE RESPOSTA
-resposta.Sequelize.create({conteudo_resposta: 'Teste2',
-                autor_resposta: 'tester2',
-                data_criado: '2019-08-11',
-                data_atualizado: '2020-01-01'});
+db.serialize(() => {
+    db.run('CREATE TABLE if not EXISTS comunicado( '+
+    'cod_comunicado integer PRIMARY KEY AUTOINCREMENT, '+
+    'data_comunicado DATETIME, '+
+    'responsavel_comunicado varchar(100), '+
+    'email_comunicado varchar(100), '+
+    'data_criado DATETIME, '+
+    'data_atualizado DATETIME '+
+  '); '+
+  
+  'CREATE TABLE if not EXISTS resposta( '+
+    'cod_resposta INTEGER PRIMARY KEY AUTOINCREMENT, '+
+    'conteudo_resposta TEXT, '+
+    'autor_resposta varchar(100), '+
+    'data_criado DATETIME, '+
+    'data_atualizado DATETIME '+
+  '); ', (err, row) => {
+      if (err) {
+        console.error(err.message);
+      }
+      //console.log(row.nome_usuario + "\t");
+    });
+  });
+ 
 
-module.exports = db;
+ /* 
+db.serialize(() => {
+  db.each(`SELECT u.cod_comunicado
+           FROM comunicado u`, (err, row) => {
+    if (err) {
+      console.error(err.message);
+    }
+    console.log(row.cod_comunicado + "\t");
+  });
+});*/
+ 
+db.close((err) => {
+  if (err) {
+    console.error(err.message);
+  }
+  console.log('Close the database connection.');
+});

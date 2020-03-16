@@ -5,7 +5,7 @@ module.exports = {
       id_resposta: {
         allowNull: false,
         auto_increment: true,
-        primaryKey: true,
+        primaryKey: 'id_resposta',
         type: Sequelize.INTEGER,
       },
 
