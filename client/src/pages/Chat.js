@@ -59,10 +59,10 @@ export default class Chat extends Component {
                                     onChange={this.handleChange}
                                 />
                             </FormControl>
-                            <Button onClick={this.handleSubmit}> Enviar </Button>
                         </form>
                     </Grid>
                     <Grid item xs={3}>
+                        <Button onClick={this.handleSubmit}> Enviar </Button>
                     </Grid>
 
                 </Grid>
