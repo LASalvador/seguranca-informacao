@@ -13,6 +13,7 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
+import {Link} from 'react-router-dom';
 
 const drawerWidth = 240;
 
@@ -55,6 +56,7 @@ export default function Header() {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
+  const items_menu = [{text:'Home', url: '/'}, {text:'Comunicados', url: '/list'}, {text:'Chat', url: '/chat'}];
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -101,10 +103,12 @@ export default function Header() {
         </div>
         <Divider />
         <List>
-          {[{text:'Comunicados', url: '/list'}, {text:'Chat', url: '/chat'}].map((item, index) => (
-            <ListItem button component="a" key={index} href={item.url}>
+          {items_menu.map((item, index) => (
+            <Link to={item.url}>
+              <ListItem button component="a" key={index}>
               <ListItemText primary={item.text} />
             </ListItem>
+            </Link>
           ))}
         </List>
       </Drawer>
