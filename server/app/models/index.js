@@ -1,13 +1,8 @@
 const fs = require('fs');
 const path = require('path');
 const config = require('../../config/database.js');
-const {
-  comunicado
-} = require('./comunicado');
-const {
-  resposta
-} = require('./resposta');
-
+const { comunicado } = require('./comunicado');
+const { resposta } = require('./resposta');
 const sqlite3 = require('sqlite3').verbose();
 
 // open the database
@@ -30,7 +25,6 @@ db.serialize(() => {
       if (err) {
         console.error(err.message);
       }
-      //console.log(row.nome_usuario + "\t");
     });
 });
 db.serialize(() => {

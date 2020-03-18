@@ -10,13 +10,12 @@
         dados do comunicado +
         respostas do comunicado
 */
-
 const config = require('../config/database.js');
 const sqlite3 = require('sqlite3').verbose();
 const express = require("express");
 const router = express.Router();
 var bodyParser = require('body-parser')
-router.use(bodyParser.urlencoded({extended: false }))
+router.use(bodyParser.urlencoded({ extended: false }))
 
 let db = new sqlite3.Database('db/AppDB.db', sqlite3.OPEN_READWRITE, (err) => {
   if (err) {
@@ -30,7 +29,6 @@ router.post("/", (req, res) => {
   let autor = req.body.autor;
   let idComunicado = req.body.id_comunicado;
 
-
   res.send('conteudo: ' + conteudo + "\n" +
     "autor: " + autor + "\n" +
     "cod comunicado: " + idComunicado);
@@ -40,11 +38,10 @@ router.post("/", (req, res) => {
     function (err) {
       if (err) {
         return console.log(err.message);
-      } else {
-        return console.log("gravou a resposta");
-      }
-
+      } 
+    
     });
+    res.status(200);
 });
 
 
