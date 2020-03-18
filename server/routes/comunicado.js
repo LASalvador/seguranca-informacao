@@ -56,8 +56,7 @@ router.get("/:id", (req, res) => {
 router.post("/", (req, res) => {
   let responsavel = req.body.responsavel;
   let email = req.body.email;
-
-  console.log('responsavel: ' + responsavel + ' email: ' + email);  
+  
   db.run('INSERT INTO comunicado ' +
   '(data_comunicado, responsavel_comunicado, email_comunicado, data_comunicado_criado, data_comunicado_atualizado) ' +
   'values (DATETIME(),"' + responsavel + '","' + email + '",DATETIME(),DATETIME());',
