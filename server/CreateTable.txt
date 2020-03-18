@@ -12,7 +12,10 @@ CREATE TABLE if not EXISTS resposta(
   conteudo_resposta TEXT,
   autor_resposta varchar(100),
   data_criado DATETIME,
-  data_atualizado DATETIME
+  data_atualizado DATETIME,
+  cod_comunicado INtEGER NOT NULL,
+   FOREIGN KEY (cod_comunicado)
+    REFERENCES comunicado(cod_comunicado)
 );
 
 CREATE TABLE if not EXISTS area(
