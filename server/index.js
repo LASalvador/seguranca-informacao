@@ -1,12 +1,13 @@
 const express = require('express');
 const app = express();
-const path = require("path");
 const comunicado = require("./routes/comunicado");
 const resposta = require("./routes/reposta")
 
+app.use(express.json());
+
 //Rotas
-  app.use('/comunicado', comunicado);
-  app.use('/resposta', resposta);
+app.use('/comunicado', comunicado);
+app.use('/resposta', resposta);
 
 app.get('/', (req, res) => {
   res.send('Salve KKKKKKKKKKKK!');
