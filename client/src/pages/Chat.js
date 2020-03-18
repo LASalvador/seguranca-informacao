@@ -26,7 +26,10 @@ export default class Chat extends Component {
         this.setState({message: event.target.value});
     }
     handleSubmit = (event) => {
-        alert('submitttt');
+        var list = this.state.list;
+        list.push({author: 'joao', content: this.state.message});
+        this.setState({list: list});
+        this.setState({message: ''});
     }
     render () {
         return (
@@ -45,17 +48,18 @@ export default class Chat extends Component {
                     }
                     </Grid>
                     <Grid item xs={9}>
-                        <form autoComplete="off" onSubmit={this.handleSubmit}>
+                        <form autoComplete="off">
                             <FormControl fullWidth>
                                 <TextField
                                     id="standard-textarea"
                                     placeholder="Mensagem"
                                     rows="3"
                                     multiline
+                                    value={this.state.message}
                                     onChange={this.handleChange}
                                 />
                             </FormControl>
-                            <Button type="submit"> Enviar </Button>
+                            <Button onClick={this.handleSubmit}> Enviar </Button>
                         </form>
                     </Grid>
                     <Grid item xs={3}>
