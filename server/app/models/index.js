@@ -18,7 +18,8 @@ db.serialize(() => {
     'cod_comunicado integer PRIMARY KEY AUTOINCREMENT, ' +
     'data_comunicado DATETIME, ' +
     'responsavel_comunicado varchar(100), ' +
-    'email_comunicado varchar(100), ' +
+    'email_comunicado varchar(100), '+
+    'hash varchar(255), ' +
     'data_comunicado_criado DATETIME, ' +
     'data_comunicado_atualizado DATETIME ' +
     '); ', (err, row) => {
