@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+
 const comunicado = require("./routes/comunicado");
 const resposta = require("./routes/reposta")
 
@@ -16,7 +17,5 @@ app.get('/', (req, res) => {
 
 
 app.listen(8020, () =>{
-  console.log("Servidor rodando.")
+  console.log("Servidor rodando na porta 8020!")
 });
-
-module.exports = app;
