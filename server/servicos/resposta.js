@@ -16,20 +16,8 @@ function insertQuery(conteudo, autor, id_comunicado) {
 
 }
 
-function selectQuery(){
-    
-    db.all("SELECT * FROM resposta;",
-        function(err, result, fields){
-            if(err){
-                return console.log(err.message);
-            }
-            return result;
-    });
 
-    return a;
-}
 
 module.exports = {
     insertQuery,
-    selectQuery
 };

@@ -2,16 +2,16 @@ const express = require('express');
 const app = express();
 
 const comunicado = require("./routes/comunicado");
-const resposta = require("./routes/reposta")
+const resposta = require("./routes/resposta")
 
 app.use(express.json());
 
 //Rotas
 app.use('/comunicado', comunicado);
-//app.use('/resposta', resposta.router);
+app.use('/resposta', resposta);
 
 app.get('/', (req, res) => {
-  res.send('Salve KKKKKKKKKKKK!');
+  res.send('Rota principal');
 });
 
 app.listen(8020, () =>{
