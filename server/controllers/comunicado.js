@@ -13,7 +13,8 @@ function criarComunicado(req, res) {
         responsavel_comunicado,
         email_comunicado,
         data_comunicado_criado,
-        data_comunicado_atualizado 
+        data_comunicado_atualizado,
+        hash_comunicado
     } = req.body;
     const comunicado = modelComunicado.criar(
         cod_comunicado,
@@ -21,7 +22,8 @@ function criarComunicado(req, res) {
         responsavel_comunicado,
         email_comunicado,
         data_comunicado_criado,
-        data_comunicado_atualizado
+        data_comunicado_atualizado,
+        hash_comunicado
     );
     res.json({comunicado: comunicado});
 }
