@@ -11,7 +11,8 @@ async function selectComunicado(cod_comunicado) {
                          'c.responsavel_comunicado, ' +
                          'c.email_comunicado, ' +
                          'c.data_comunicado_criado, ' +
-                         'c.data_comunicado_atualizado ' +
+                         'c.data_comunicado_atualizado, '+
+                         'c.hash_comunicado ' +
                   'FROM resposta r  ' +
                   'LEFT JOIN comunicado c on c.cod_comunicado = r.cod_comunicado ' +
                   'WHERE r.cod_comunicado = ' +cod_comunicado);
