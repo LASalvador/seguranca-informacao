@@ -2,8 +2,7 @@ const express = require("express");
 const router = express.Router();
 const controller = require('../controllers/')
 
-// FAZER ISSO PORPS, DEIXEI MEIO PRONTO JÁ
-router.get('/', controller.comunicado.index);
+router.get('/:cod_comunicado', controller.comunicado.index);
 
 router.post('/', controller.comunicado.criarComunicado);
 

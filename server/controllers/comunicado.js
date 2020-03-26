@@ -1,7 +1,8 @@
 const modelComunicado = require('../models/comunicado');
 
-function index(req, res) {
-    const lista_comunicados = modelComunicado.listar();
+async function index(req, res) {
+    const cod_comunicado = req.params.cod_comunicado;
+    const lista_comunicados = await modelComunicado.listar(cod_comunicado);
     res.json({lista_comunicados: lista_comunicados});
 }
 
