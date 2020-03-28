@@ -6,6 +6,11 @@ async function index(req, res) {
     res.json({lista_comunicados: lista_comunicados});
 }
 
+async function retornarTodosComunicados(req, res){
+    const retorno = await modelComunicado.listarTodosComunicado();
+    res.json({retorno:retorno});
+}
+
 function criarComunicado(req, res) {
     const {
         cod_comunicado,
@@ -30,5 +35,6 @@ function criarComunicado(req, res) {
 
 module.exports = {
     index,
-    criarComunicado
+    criarComunicado,
+    retornarTodosComunicados
 }
