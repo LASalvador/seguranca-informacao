@@ -1,14 +1,19 @@
 const servicoResposta = require('../servicos/resposta')
-function criar(conteudo, autor, id_comunicado){
+
+function criar(conteudo, autor, cod_comunicado){
     const resposta = {
         conteudo: conteudo,
         autor: autor,
-        id_comunicado: id_comunicado
+        cod_comunicado: cod_comunicado
     };
-    
-    servicoResposta.insertQuery(conteudo, autor, id_comunicado);
-    
+
+    servicoResposta.insertQuery(conteudo, autor, cod_comunicado);
+
     return resposta;
 }
 
-module.exports = {criar};
+function updateTableComunicado(cod_comunicado){
+    servicoResposta.updateComunicado(cod_comunicado); 
+}
+
+module.exports = {criar, updateTableComunicado};
