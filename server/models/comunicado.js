@@ -24,7 +24,12 @@ async function listar(cod_comunicado) {
     return (await servicoComunicado.selectComunicado(cod_comunicado));
 }
 
+async function listarTodosComunicado(){
+    return (await servicoComunicado.selectTodosComunicado());
+}
+
 module.exports = {
     criar,
-    listar
+    listar,
+    listarTodosComunicado
 };

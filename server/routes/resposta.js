@@ -1,7 +1,3 @@
-/*
-    POST /resposta
-        body [conteudo, autor, id_comunicado]
-*/
 const express = require("express");
 const router = express.Router();
 const controller = require('../controllers/');
