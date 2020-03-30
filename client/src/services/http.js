@@ -6,6 +6,4 @@ const http = axios.create({
   baseURL: api
 })
 
-export default function () {
-  return http
-}
+export default http;
