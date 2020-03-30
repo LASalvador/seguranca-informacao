@@ -2,20 +2,15 @@ const selectPromise = require('./select');
 
 
 async function selectComunicado(cod_comunicado) {
-  var resposta  = await selectPromise('SELECT r.cod_resposta, ' +
-      'r.conteudo_resposta, ' +
-      'r.autor_resposta, ' +
-      'r.data_resposta_criado, ' +
-      'r.data_resposta_atualizado, ' +
-      'c.data_comunicado, ' +
-      'c.responsavel_comunicado, ' +
-      'c.email_comunicado, ' +
-      'c.data_comunicado_criado, ' +
-      'c.data_comunicado_atualizado, '+
-      'c.hash_comunicado ' +
-      'FROM resposta r  ' +
-      'LEFT JOIN comunicado c on c.cod_comunicado = r.cod_comunicado ' +
-      'WHERE r.cod_comunicado = ' +cod_comunicado);
+  var resposta  = await selectPromise('SELECT c.responsavel_comunicado, ' +
+  'c.email_comunicado, ' + 
+  'c.hash_comunicado, ' + 
+  'r.conteudo_resposta, ' + 
+  'r.autor_resposta, '+  
+  'r.data_resposta ' + 
+  'from comunicado c ' + 
+  'INNER JOIN resposta r on c.cod_comunicado = r.cod_comunicado ' + 
+  'where c.cod_comunicado = 1;');
     return resposta;
   }
 
