@@ -9,7 +9,6 @@ import Home from './pages/Home';
 export default function Routes() {
     return (
         <Switch>
-            <Route path='/chat' exact component={Chat} />
             <Route path='/chat/:id' exact component={Chat} />
             <Route path='/list' exact component={ListaConversa} />
             <Route path='/' exact component={Home} />
