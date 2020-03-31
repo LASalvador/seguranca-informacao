@@ -16,8 +16,6 @@ export default class Chat extends Component {
     async componentDidMount (){
         const id = this.props.match.params.id;
         const response = await api.get(`comunicado/${id}`);
-
-        console.log(response.data.lista_comunicados.respostas)
         this.setState({list: response.data.lista_comunicados.respostas})
         this.setState({dpo: 'joao'})
     }
