@@ -26,9 +26,15 @@ export default class Chat extends Component {
     }
     handleSubmit = (event) => {
         var list = this.state.list;
-        list.push({author: 'joao', content: this.state.message});
+        list.push({author: 'joao', conteudo: this.state.message});
         this.setState({list: list});
         this.setState({message: ''});
+
+        api.post('resposta/', {
+            conteudo: this.state.message,
+            autor: 'joão',
+            cod_comunicado: this.props.match.params.id
+        })
     }
     render () {
         return (
@@ -47,7 +53,7 @@ export default class Chat extends Component {
                         })
                     }
                     </Grid>
-                    <Grid item xs={9}>
+                    <Grid item xs={10}>
                         <form autoComplete="off">
                             <FormControl fullWidth>
                                 <TextField
@@ -61,7 +67,7 @@ export default class Chat extends Component {
                             </FormControl>
                         </form>
                     </Grid>
-                    <Grid item xs={3}>
+                    <Grid item xs={2}>
                         <Button onClick={this.handleSubmit}> Enviar </Button>
                     </Grid>
                 </Grid>
