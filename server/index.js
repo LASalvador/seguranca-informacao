@@ -1,9 +1,10 @@
 const express = require('express');
+const cors = require('cors');
 const app = express();
 
 const comunicado = require("./routes/comunicado");
 const resposta = require("./routes/resposta")
-
+app.use(cors());
 app.use(express.json());
 
 //Rotas
