@@ -4,22 +4,21 @@ import TextField from '@material-ui/core/TextField';
 import FormControl from '@material-ui/core/FormControl';
 import Button from '@material-ui/core/Button';
 import ChatCard from '../components/ChatCard';
-
+import api from '../services/http'
 
 export default class Chat extends Component {
     state = {
         list: [],
         dpo: [],
-        message: '', 
+        message: '',
     }
 
     async componentDidMount (){
-        this.setState({list: [
-            {author: 'joao', content: 'maria'},
-            {author: 'joao2', content: 'maria2'},
-            {author: 'joao', content: 'maria3'},
-            {author: 'joao4', content: 'maria4'},
-        ]})
+        const id = this.props.match.params.id;
+        const response = await api.get(`comunicado/${id}`);
+
+        console.log(response.data.lista_comunicados.respostas)
+        this.setState({list: response.data.lista_comunicados.respostas})
         this.setState({dpo: 'joao'})
     }
     handleChange = (event) => {
@@ -41,7 +40,7 @@ export default class Chat extends Component {
                             return <ChatCard
                                     key={index} 
                                     author={msg.author}
-                                    content={msg.content}
+                                    content={msg.conteudo}
                                     dpo={this.state.dpo}
                                  />
                         })
@@ -64,7 +63,6 @@ export default class Chat extends Component {
                     <Grid item xs={3}>
                         <Button onClick={this.handleSubmit}> Enviar </Button>
                     </Grid>
-
                 </Grid>
             </section>
         );
