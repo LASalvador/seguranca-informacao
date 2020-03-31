@@ -104,8 +104,8 @@ export default function Header() {
         <Divider />
         <List>
           {items_menu.map((item, index) => (
-            <Link to={item.url}>
-              <ListItem button component="a" key={index}>
+            <Link to={item.url} key={index}>
+              <ListItem button>
               <ListItemText primary={item.text} />
             </ListItem>
             </Link>
