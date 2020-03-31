@@ -20,6 +20,12 @@ const useStyles = makeStyles({
         : '0 3px 5px 2px rgba(255, 105, 135, .3)',
   },
   title: {
+    fontSize: 18,
+  },
+  content: {
+    fontSize: 16,
+  },
+  date: {
     fontSize: 14,
   },
 });
@@ -33,8 +39,11 @@ export default function ChatCard(props) {
         <Typography className={classes.title} color="textSecondary" gutterBottom>
           {props.author}
         </Typography>
-        <Typography variant="body2" component="p">
+        <Typography className={classes.content} variant="body2" component="p">
           {props.content}
+        </Typography>
+        <Typography className={classes.date}  color="textSecondary" component="p">
+          {props.date}
         </Typography>
       </CardContent>
     </Card>

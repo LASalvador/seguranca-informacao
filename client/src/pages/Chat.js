@@ -41,6 +41,7 @@ export default class Chat extends Component {
                                     key={index} 
                                     author={msg.author}
                                     content={msg.conteudo}
+                                    date={msg.data}
                                     dpo={this.state.dpo}
                                  />
                         })
