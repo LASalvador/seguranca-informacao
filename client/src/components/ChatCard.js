@@ -17,7 +17,7 @@ const useStyles = makeStyles({
     boxShadow: props =>
       props.author === props.dpo
         ? '0 3px 5px 2px rgba(177, 186, 230, .3)'
-        : '0 3px 5px 2px rgba(255, 105, 135, .3)',
+        : '0 3px 5px 2px rgba(177, 186, 230, .3)',
   },
   title: {
     fontSize: 18,
