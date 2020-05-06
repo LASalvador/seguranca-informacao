@@ -5,6 +5,7 @@ import { Switch, Route } from 'react-router-dom';
 import Chat from './pages/Chat';
 import ListaConversa from './pages/ListaConversas';
 import Home from './pages/Home';
+import cadastrocomunicado from './pages/CadastroComunicado';
 
 export default function Routes() {
     return (
@@ -12,6 +13,7 @@ export default function Routes() {
             <Route path='/chat/:id' exact component={Chat} />
             <Route path='/list' exact component={ListaConversa} />
             <Route path='/' exact component={Home} />
+            <Route path='/cadastrocomunicado' exact component={cadastrocomunicado} />
         </Switch>
     );
 }

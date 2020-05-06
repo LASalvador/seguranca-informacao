@@ -56,7 +56,12 @@ export default function Header() {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
-  const items_menu = [{text:'Home', url: '/'}, {text:'Comunicados', url: '/list'}, {text:'Chat', url: '/chat'}];
+  const items_menu = [
+    {text:'Home', url: '/'}, 
+    {text:'Comunicados', url: '/list'}, 
+    {text:'Chat', url: '/chat'}, 
+    {text:'Cadastrar Comunicado', url: '/CadastroComunicado'}
+  ];
 
   const handleDrawerOpen = () => {
     setOpen(true);
