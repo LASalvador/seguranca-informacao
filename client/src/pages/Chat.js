@@ -3,6 +3,11 @@ import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import FormControl from '@material-ui/core/FormControl';
 import Button from '@material-ui/core/Button';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
 import ChatCard from '../components/ChatCard';
 import api from '../services/http'
 
@@ -11,9 +16,25 @@ export default class Chat extends Component {
         list: [],
         dpo: [],
         message: '',
+        open: false,
+        hash: '',
     }
 
+    handleClickOpen = () => {
+        this.setState({open: true});
+     };
+    
+    handleClose = () => {
+        this.setState({open: false});
+    };
+
     async componentDidMount (){
+        const hash = localStorage.getItem("xxx");
+        if (hash) {
+            this.setState({hash: hash})
+        } else {
+            this.setState({open: true})
+        }
         const id = this.props.match.params.id;
         const response = await api.get(`comunicado/${id}`);
         this.setState({list: response.data.lista_comunicados.respostas})
@@ -69,6 +90,37 @@ export default class Chat extends Component {
                         <Button onClick={this.handleSubmit}> Enviar </Button>
                     </Grid>
                 </Grid>
+                <Button variant="outlined" color="primary" onClick={this.handleClickOpen}>
+                    Open form dialog
+                </Button>
+                <Dialog 
+                    open={this.state.open} 
+                    onClose={this.handleClose} 
+                    disableBackdropClick
+                    disableEscapeKeyDown  
+                    aria-labelledby="form-dialog-title"
+                >
+                    <DialogTitle id="form-dialog-title">Autenticação</DialogTitle>
+                    <DialogContent>
+                        <DialogContentText>
+                        Para ter acesso ao chat por favor insira o hash que te enviamos quando criamos por email.
+                        </DialogContentText>
+                        <TextField
+                        autoFocus
+                        margin="dense"
+                        id="hash"
+                        label="Hash"
+                        type="text"
+                        fullWidth
+                        />
+                    </DialogContent>
+                    <DialogActions>
+                        <Button onClick={this.handleClose} color="primary">
+                        Enviar
+                        </Button>
+                    </DialogActions>
+                </Dialog>
+
             </section>
         );
     }
