@@ -3,11 +3,11 @@ Aplicação para auxiliar o DPO a exercer suas atividades de acordo com LGPD. A 
 
 # Sistema
     * __Backend__
-        * Rotas para comunicado, resposta e DPO (get, post, put e delete);
-        * CRUD das entidades do sistema;
-        * Criação do banco de dados para armazenamento de informações;
-        * Atualizações de datas na tabela comunicado ao ser inserida uma nova resposta para tal comunicado;
-        * Validação de token de um comunicado.
+    	-  Rotas para comunicado, resposta e DPO (get, post, put e delete);
+        - CRUD das entidades do sistema;
+        - Criação do banco de dados para armazenamento de informações;
+        - Atualizações de datas na tabela comunicado ao ser inserida uma nova resposta para tal comunicado;
+        - Validação de token de um comunicado.
     * Frontend
 
 ## Integrantes
