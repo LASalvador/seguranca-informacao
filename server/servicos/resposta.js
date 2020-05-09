@@ -20,8 +20,6 @@ function updateComunicado(cod_comunicado){
     return db.run('UPDATE comunicado SET data_comunicado_atualizado = DATETIME() WHERE cod_comunicado = '+cod_comunicado);
 }
 
-
-
 module.exports = {
     insertQuery,
     updateComunicado

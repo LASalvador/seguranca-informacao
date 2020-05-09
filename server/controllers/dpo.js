@@ -21,6 +21,27 @@ async function retornarTodosDPO(req, res){
     res.json({retorno:retorno});
 }
 
+function alterarDPO(req, res){
+    const id = req.params.cod_dpo;
+    const {
+        nome_dpo,
+        email_dpo,
+        senha,
+        desc_dpo,
+        telefone_dpo
+    } = req.body;
+    
+    const dpo = modelDPO.alterar(
+        id,
+        nome_dpo,
+        email_dpo,
+        senha,
+        desc_dpo,
+        telefone_dpo);
+
+    res.json({dpo: dpo})
+}
+
 function criarDPO(req, res) {
     const {
         nome_dpo,
@@ -29,6 +50,7 @@ function criarDPO(req, res) {
         desc_dpo,
         telefone_dpo
     } = req.body;
+
     const dpo = modelDPO.criar(
         nome_dpo,
         email_dpo,
@@ -39,8 +61,16 @@ function criarDPO(req, res) {
     res.json({dpo: dpo});
 }
 
+function deletarDPO(req, res){
+    const cod_dpo = req.params.cod_dpo;
+    const dpo = modelDPO.deletar(cod_dpo);
+    res.json({dpo: dpo});
+}
+
 module.exports = {
     index,
     criarDPO,
-    retornarTodosDPO
+    retornarTodosDPO,
+    alterarDPO,
+    deletarDPO
 }
