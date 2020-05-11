@@ -5,13 +5,16 @@ const app = express();
 const comunicado = require("./routes/comunicado");
 const resposta = require("./routes/resposta");
 const dpo = require("./routes/dpo");
+const validacao = require("./routes/validacao");
+
 app.use(cors());
 app.use(express.json());
 
 //Rotas
 app.use('/comunicado', comunicado);
 app.use('/resposta', resposta);
-app.use('/dpo',dpo);
+app.use('/dpo', dpo);
+app.use('/validar', validacao);
 
 app.get('/', (req, res) => {
   res.send('Rota principal');

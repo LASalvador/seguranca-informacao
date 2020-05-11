@@ -1,6 +1,5 @@
 const selectPromise = require('./select');
 
-
 async function selectComunicado(cod_comunicado) {
   var resposta  = await selectPromise('SELECT c.responsavel_comunicado, ' +
   'c.email_comunicado, ' + 
