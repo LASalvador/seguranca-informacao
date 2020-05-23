@@ -1,4 +1,5 @@
 const modelComunicado = require('../models/comunicado');
+const crypto = require('crypto');
 
 async function index(req, res) {
     const cod_comunicado = req.params.cod_comunicado;
@@ -6,18 +7,20 @@ async function index(req, res) {
     
     var lista_comunicados = {};
 
-    lista_comunicados.responsavel_comunicado = comunicados[0].responsavel_comunicado
-    lista_comunicados.email_comunicado = comunicados[0].email_comunicado
-    lista_comunicados.hash_comunicado = comunicados[0].hash_comunicado
-    lista_comunicados.respostas = []
+    if (comunicados) {
+        lista_comunicados.responsavel_comunicado = comunicados[0].responsavel_comunicado
+        lista_comunicados.email_comunicado = comunicados[0].email_comunicado
+        lista_comunicados.hash_comunicado = comunicados[0].hash_comunicado
+        lista_comunicados.respostas = []
 
-    comunicados.forEach(resposta => {
-        lista_comunicados.respostas.push({
-            author: resposta.autor_resposta,
-            conteudo: resposta.conteudo_resposta,
-            data: resposta.data_resposta
-        })
-    });
+        comunicados.forEach(resposta => {
+            lista_comunicados.respostas.push({
+                author: resposta.autor_resposta,
+                conteudo: resposta.conteudo_resposta,
+                data: resposta.data_resposta
+            })
+        });
+    }
 
     res.json({lista_comunicados: lista_comunicados});
 }
@@ -29,23 +32,15 @@ async function retornarTodosComunicados(req, res){
 
 function criarComunicado(req, res) {
     const {
-        cod_comunicado,
-        data_comunicado,
         responsavel_comunicado,
         email_comunicado,
-        data_comunicado_criado,
-        data_comunicado_atualizado,
-        hash_comunicado
+        cod_dpo,
     } = req.body;
-    const comunicado = modelComunicado.criar(
-        cod_comunicado,
-        data_comunicado,
-        responsavel_comunicado,
-        email_comunicado,
-        data_comunicado_criado,
-        data_comunicado_atualizado,
-        hash_comunicado
-    );
+
+    var hash_comunicado = crypto.randomBytes(6).toString('HEX')
+
+    const comunicado = modelComunicado.criar(responsavel_comunicado, email_comunicado, hash_comunicado, cod_dpo)
+
     res.json({comunicado: comunicado});
 }
 

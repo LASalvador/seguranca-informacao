@@ -58,9 +58,9 @@ export default function Header() {
   const [open, setOpen] = React.useState(false);
   const items_menu = [
     {text:'Home', url: '/'}, 
-    {text:'Comunicados', url: '/list'}, 
-    {text:'Chat', url: '/chat'}, 
-    {text:'Cadastrar Comunicado', url: '/CadastroComunicado'}
+    {text:'Comunicados', url: '/list'},
+    {text:'Cadastrar Comunicado', url: '/cadastrocomunicado'},
+    {text:'Login', url: '/login'}
   ];
 
   const handleDrawerOpen = () => {
