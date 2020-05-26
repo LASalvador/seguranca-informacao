@@ -60,7 +60,8 @@ export default function Header() {
     {text:'Home', url: '/'}, 
     {text:'Comunicados', url: '/list'},
     {text:'Cadastrar Comunicado', url: '/cadastrocomunicado'},
-    {text:'Login', url: '/login'}
+    {text:'Login', url: '/login'},
+    {text: 'Cadastre-se', url: '/cadastre-se'}
   ];
 
   const handleDrawerOpen = () => {
