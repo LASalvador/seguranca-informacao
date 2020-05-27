@@ -56,6 +56,13 @@ Além disso, teremos uma tela com a lista do DPOs cadastrados afim de torná-los
     - Direcionamento para tela com mensagens do comunicado
    - Adição de tela de cadastro comunicado
     - Formulário para cadastramento de comunicado
+
+## BurnDown 
+
+### Tabela
+![Tabela Burndown](images/tabela.jpg)
+### Gráfico
+![Grafico Burndown](images/grafico.jpg)
 ## Tecnologias
 
 * React.js
