@@ -29,13 +29,19 @@ Além disso, teremos uma tela com a lista do DPOs cadastrados afim de torná-los
    - Rotas de reposta (get, post, put e delete)
      - crud das resposta de um comunicado
    - Geração de chave de acesso para o comunicado
+   
+   
   **Sprint 2**
    - Adição do Modelo DPO
    - Rotas de DPO (get, post, put e delete);
     - Crud de DPO
-    - Geração de hash de senha do DPO
    - Rotas de Validação de chave de acesso ao Comunicado
 
+  **Sprint 3**
+  - Rota de Login
+    - geração de JSON Web Token(JWT) para validação de sessão do usuário
+  - Adição de serviço de email(Nodemailer)
+    - Criação de métodos que possibilitam o envio de email para um usuário
 
 ### FrontEnd
    **Sprint 1**
@@ -56,7 +62,17 @@ Além disso, teremos uma tela com a lista do DPOs cadastrados afim de torná-los
     - Direcionamento para tela com mensagens do comunicado
    - Adição de tela de cadastro comunicado
     - Formulário para cadastramento de comunicado
-
+  
+  **Sprint 3**
+   - Tela de Login para DPO
+     - Criação de tela
+     - Ligação com a API para realizar o login
+   - Tela de cadastro para DPO
+      - Criação de tela
+      - Ligação com a API para realizar o cadastro
+   - Tela de chat
+     - Ligação com a API para validar o chave de acesso gerada
+  
 ## BurnDown 
 
 ### Tabela

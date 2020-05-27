@@ -1,82 +1,120 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import FormControl from '@material-ui/core/FormControl';
 import TextField from '@material-ui/core/TextField';
 import InputLabel from '@material-ui/core/InputLabel';
-import FormHelperText from '@material-ui/core/FormHelperText';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
-import NativeSelect from '@material-ui/core/NativeSelect';
 import api from '../services/http'
+import { useHistory } from 'react-router-dom';
 
 const useStyles = makeStyles({
     root: {
-      width:500,
-      flex: 1, 
-      marginRight:100,
-      marginLeft: 500, 
       fontSize: 15, 
-      textAlign: "center"
+      textAlign: "center",
+      display: 'flex',
+      alignItems: 'center'
     },
     espaco: {
       marginTop:20,
+      width:'50vw',
     },
     titulo: {
         fontSize:30, 
       },
     espacobtt: {
         marginTop:40,
-        width: 300,
-        marginLeft: 120, 
         textAlign: "center",
         height: 50
       },
 });
 
-function Item(props){
+function Form(props){
+  const history = useHistory();
+
     const classes = useStyles();
-    const [age, setAge] = React.useState('');
-    
+    const [nome, setNome] = useState("");
+    const [email, setEmail] = useState("");
+    const [descricao, setDescricao] = useState("");
+    const [dpo, setDpo] = useState("");
+  
+    async function realizarCadastro(){
+      try {
+        await api.post("comunicado", {responsavel_comunicado: nome, email_comunicado: email, cod_dpo: dpo })
+        history.push("/")
+      } catch (error) {
+        alert("Erro ao fazer Cadastro");
+      }
+    }
+
     return (
         <FormControl className={classes.root}>
             <h1 className={classes.titulo}>Cadastro</h1>
-            <TextField id="nome" label="Nome" className={classes.espaco} />
-            <TextField id="email" label="E-mail" className={classes.espaco} />
-            <TextField id="descricao" label="Descrição" className={classes.espaco} />
+            <TextField 
+              id="nome" 
+              label="Nome" 
+              className={classes.espaco}
+              onChange={evento => setNome(evento.target.value)} 
+            />
+            <TextField 
+              id="email" 
+              label="E-mail" 
+              type="email"
+              className={classes.espaco}
+              onChange={evento => setEmail(evento.target.value)} 
+            />
             <FormControl className={classes.espaco}>
-            <InputLabel id="demo-simple-select-label">Selecione o DPO</InputLabel>
-            <Select>
-            <MenuItem value={10}>Mayara</MenuItem>
-            <MenuItem value={20}>Lucas</MenuItem>
-            <MenuItem value={30}>joão</MenuItem>
-            </Select>
+              <InputLabel 
+                id="demo-simple-select-label"
+              >
+                Selecione o DPO
+              </InputLabel>
+              <Select>
+                {props.dpos.map(item => (
+                  <MenuItem value={item.id} onChange={evento => setDpo(evento.target.value)} >{item.nome}</MenuItem>
+                ))}
+
+              </Select>
             </FormControl>
-            <Button variant="contained" color="primary" className={classes.espacobtt}>
+            <TextField 
+              className={classes.espaco} 
+              id="descricao" 
+              label="Descrição" 
+              multiline={true} 
+              rows={3}
+              onChange={evento => setDescricao(evento.target.value)} 
+            />
+            <Button 
+              variant="contained" 
+              color="primary" 
+              className={classes.espacobtt}
+              onClick={realizarCadastro}
+            >
               Cadastrar
             </Button>
         </FormControl>
     )
 }
-export default class Home extends Component {
+export default class CadastroComunicado extends Component {
     state = {
-        cardList: [],
-      }
-      async componentDidMount(){
-        const resposta = await api.post('/comunicado')
-    
-        const lista = resposta.data.retorno.map((item) => {
-          return {
-            id: item.cod_comunicado,
-            title: item.responsavel_comunicado,
-            dia: item.data_atualizacao
-          }
-        })
-        this.setState({cardList: lista})
-      }
+      dpos: [],
+    }
+
+    async componentDidMount () {
+      const response = await api.get('dpo');
+      const dpos = response.data.retorno.map((item) => {
+        return  {
+          id: item.cod_dpo,
+          nome: item.nome_dpo
+        }
+      })
+
+      this.setState({dpos: dpos})
+    }
     render () {
         return (
-            <Item cardList={this.state.cardList}/>
+            <Form dpos={this.state.dpos}/>
         );
     }
 }

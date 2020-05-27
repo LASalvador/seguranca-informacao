@@ -12,12 +12,14 @@ import ChatCard from '../components/ChatCard';
 import api from '../services/http'
 
 export default class Chat extends Component {
+
     state = {
         list: [],
         dpo: [],
         message: '',
         open: false,
         hash: '',
+        text: ''
     }
 
     handleClickOpen = () => {
@@ -27,6 +29,21 @@ export default class Chat extends Component {
     handleClose = () => {
         this.setState({open: false});
     };
+
+    handleDialog = async () => {
+        var hash = this.state.hash
+        var id = this.props.match.params.id
+        id = id.replace(':', '')
+        
+        try {
+            await api.get(`validar?token=${hash}&id=${id}`)
+        } catch (error) {
+            this.setState({text: 'Chave inválida'})
+            return ;
+        }
+
+        this.setState({open: false})
+    }
 
     async componentDidMount (){
         const hash = localStorage.getItem("xxx");
@@ -90,9 +107,6 @@ export default class Chat extends Component {
                         <Button onClick={this.handleSubmit}> Enviar </Button>
                     </Grid>
                 </Grid>
-                <Button variant="outlined" color="primary" onClick={this.handleClickOpen}>
-                    Open form dialog
-                </Button>
                 <Dialog 
                     open={this.state.open} 
                     onClose={this.handleClose} 
@@ -103,7 +117,8 @@ export default class Chat extends Component {
                     <DialogTitle id="form-dialog-title">Autenticação</DialogTitle>
                     <DialogContent>
                         <DialogContentText>
-                        Para ter acesso ao chat por favor insira o hash que te enviamos quando criamos por email.
+                            Para ter acesso ao chat por favor insira a chave que te enviamos por email.
+                            {this.state.text}
                         </DialogContentText>
                         <TextField
                         autoFocus
@@ -112,10 +127,12 @@ export default class Chat extends Component {
                         label="Hash"
                         type="text"
                         fullWidth
+                        value={this.state.hash}
+                        onChange={event => this.setState({hash: event.target.value})}
                         />
                     </DialogContent>
                     <DialogActions>
-                        <Button onClick={this.handleClose} color="primary">
+                        <Button onClick={this.handleDialog} color="primary">
                         Enviar
                         </Button>
                     </DialogActions>

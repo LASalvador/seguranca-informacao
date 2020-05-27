@@ -1,23 +1,25 @@
 const sqlite3 = require('sqlite3').verbose();
 const selectPromise = require('../servicos/select');
 const servicoComunicado = require('../servicos/comunicado');
+const dataService = require('../servicos/data');
 const db = new sqlite3.Database('db/AppDB.db', sqlite3.OPEN_READWRITE, (err) => {
     if (err) {
         console.error(err.message);
     }
 });
 
-function criar(cod_comunicado, data_comunicado, responsavel_comunicado, email_comunicado, data_comunicado_criado, data_comunicado_atualizado, hash_comunicado) {
+function criar(responsavel_comunicado, email_comunicado, hash_comunicado, cod_dpo) {
+    const data_atual = dataService()
     const comunicado = {
-        cod_comunicado: cod_comunicado,
-        data_comunicado: data_comunicado,
+        data_comunicado: data_atual,
         responsavel_comunicado: responsavel_comunicado,
         email_comunicado: email_comunicado,
-        data_comunicado_criado: data_comunicado_criado,
-        data_comunicado_atualizado: data_comunicado_atualizado,
-        hash_comunicado: hash_comunicado
+        data_comunicado_criado: data_atual,
+        data_comunicado_atualizado: data_atual,
+        hash_comunicado: hash_comunicado,
+        cod_dpo: cod_dpo
     };
-    db.run('INSERT INTO comunicado (cod_comunicado, data_comunicado, responsavel_comunicado, email_comunicado, data_comunicado_criado, data_comunicado_atualizado, hash_comunicado) VALUES ('+cod_comunicado+',"'+data_comunicado+'","'+responsavel_comunicado+'","'+email_comunicado+'","'+data_comunicado_criado+'","'+data_comunicado_atualizado+'","'+hash_comunicado+'")');
+    db.run('INSERT INTO comunicado (data_comunicado, responsavel_comunicado, email_comunicado, data_comunicado_criado, data_comunicado_atualizado, hash_comunicado, cod_dpo) VALUES ("'+data_atual+'","'+responsavel_comunicado+'","'+email_comunicado+'","'+data_atual+'","'+data_atual+'","'+hash_comunicado+'", "'+ cod_dpo +'")');
     return comunicado;
 }
 
