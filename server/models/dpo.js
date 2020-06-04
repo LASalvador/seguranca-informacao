@@ -1,19 +1,22 @@
-const sqlite3 = require('sqlite3').verbose();
 const selectPromise = require('../servicos/select');
-const servicoDPO = require('../servicos/dpo');
-const jwt = require('jsonwebtoken');
 const authConfig = require('./config/auth.json');
+const servicoDPO = require('../servicos/dpo');
+const sqlite3 = require('sqlite3').verbose();
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt');
 
-function criar(nome_dpo, email_dpo, senha, desc_dpo, telefone_dpo) {
+async function criar(nome_dpo, email_dpo, senha, desc_dpo, telefone_dpo) {
+    const hashedPassword = await bcrypt.hash(senha, 10);
+
     const dpo = {
         nome_dpo: nome_dpo,
         email_dpo: email_dpo,
-        senha: senha,
+        senha: hashedPassword,
         desc_dpo: desc_dpo,
         telefone_dpo: telefone_dpo
     };
 
-    servicoDPO.createDPO(nome_dpo, email_dpo, senha, desc_dpo, telefone_dpo);
+    servicoDPO.createDPO(nome_dpo, email_dpo, hashedPassword, desc_dpo, telefone_dpo);
 
     return dpo;
 }
@@ -36,16 +39,19 @@ function deletar(cod_dpo){
 
 async function login(email, senha){
     try{
-        let currentDPO = await selectPromise('select * from dpo where email_dpo = "'+email+'" and senha = "'+senha+'"');
+        //let currentDPO = await selectPromise('select * from dpo where email_dpo = "'+email+'" and senha = "'+senha+'"');
+        let currentDPO = await selectPromise('select * from dpo where email_dpo = "'+email+'"');
 
         if (currentDPO) {
-            const token = jwt.sign({
-                id_user: currentDPO[0].cod_dpo,
-                email: currentDPO[0].email_dpo
-            }, authConfig.secret, {
-                expiresIn: "1h"
-            });
-            return token;
+            if(await bcrypt.compare(senha, currentDPO[0].senha)){
+                const token = jwt.sign({
+                    id_user: currentDPO[0].cod_dpo,
+                    email: currentDPO[0].email_dpo
+                }, authConfig.secret, {
+                    expiresIn: "1h"
+                });
+                return token;
+            }
         }
     } catch(err){
         console.log(err);
