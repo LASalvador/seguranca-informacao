@@ -22,7 +22,7 @@ mail.use('compile', hbs({
     
 }));
 
-function enviarEmail(subject, body, dest){
+function enviarEmail(subject, body, dest, nome_dest, hash_comunicado){
 
     var emailSend = {
         from: 'fatec1b.adm@gmail.com',
@@ -30,7 +30,9 @@ function enviarEmail(subject, body, dest){
         subject: subject,
         template: 'email',
         context: {
-            body: body
+            body: body,
+            nome_dest: nome_dest,
+            hash_comunicado: hash_comunicado
         }
     }
     mail.sendMail(emailSend, function (error) {

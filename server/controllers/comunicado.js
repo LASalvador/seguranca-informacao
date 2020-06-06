@@ -1,5 +1,6 @@
 const modelComunicado = require('../models/comunicado');
 const crypto = require('crypto');
+const email = require('../servicos/email');
 
 async function index(req, res) {
     const cod_comunicado = req.params.cod_comunicado;
@@ -40,7 +41,7 @@ function criarComunicado(req, res) {
     var hash_comunicado = crypto.randomBytes(6).toString('HEX')
 
     const comunicado = modelComunicado.criar(responsavel_comunicado, email_comunicado, hash_comunicado, cod_dpo)
-
+    email.enviarEmail('Recebemos sua mensagem.', 'Recebemos sua mensagem! Em breve o DPO entrará em contato com você.', email_comunicado, responsavel_comunicado, hash_comunicado);
     res.json({comunicado: comunicado});
 }
 
