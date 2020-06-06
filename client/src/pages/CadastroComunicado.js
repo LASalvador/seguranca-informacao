@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import FormControl from '@material-ui/core/FormControl';
@@ -7,6 +7,7 @@ import InputLabel from '@material-ui/core/InputLabel';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import api from '../services/http'
+import { useHistory } from 'react-router-dom';
 
 const useStyles = makeStyles({
     root: {
@@ -30,21 +31,38 @@ const useStyles = makeStyles({
 });
 
 function Form(props){
+  const history = useHistory();
+
     const classes = useStyles();
-    
+    const [nome, setNome] = useState("");
+    const [email, setEmail] = useState("");
+    const [descricao, setDescricao] = useState("");
+    const [dpo, setDpo] = useState("");
+  
+    async function realizarCadastro(){
+      try {
+        await api.post("comunicado", {responsavel_comunicado: nome, email_comunicado: email, cod_dpo: dpo })
+        history.push("/")
+      } catch (error) {
+        alert("Erro ao fazer Cadastro");
+      }
+    }
+
     return (
         <FormControl className={classes.root}>
             <h1 className={classes.titulo}>Cadastro</h1>
             <TextField 
               id="nome" 
               label="Nome" 
-              className={classes.espaco} 
+              className={classes.espaco}
+              onChange={evento => setNome(evento.target.value)} 
             />
             <TextField 
               id="email" 
               label="E-mail" 
               type="email"
-              className={classes.espaco} 
+              className={classes.espaco}
+              onChange={evento => setEmail(evento.target.value)} 
             />
             <FormControl className={classes.espaco}>
               <InputLabel 
@@ -54,8 +72,9 @@ function Form(props){
               </InputLabel>
               <Select>
                 {props.dpos.map(item => (
-                  <MenuItem value={item.id}>{item.nome}</MenuItem>
+                  <MenuItem value={item.id} onChange={evento => setDpo(evento.target.value)} >{item.nome}</MenuItem>
                 ))}
+
               </Select>
             </FormControl>
             <TextField 
@@ -64,11 +83,13 @@ function Form(props){
               label="Descrição" 
               multiline={true} 
               rows={3}
+              onChange={evento => setDescricao(evento.target.value)} 
             />
             <Button 
               variant="contained" 
               color="primary" 
               className={classes.espacobtt}
+              onClick={realizarCadastro}
             >
               Cadastrar
             </Button>

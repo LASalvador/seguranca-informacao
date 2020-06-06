@@ -13,10 +13,6 @@ import api from '../services/http'
 
 export default class Chat extends Component {
 
-    constructor (props) {
-        super(props)
-    }
-
     state = {
         list: [],
         dpo: [],
