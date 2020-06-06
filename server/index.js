@@ -7,6 +7,7 @@ const resposta = require("./routes/resposta");
 const dpo = require("./routes/dpo");
 const validacao = require("./routes/validacao");
 const login = require("./routes/login");
+const email = require("./servicos/email");
 
 app.use(cors());
 app.use(express.json());
@@ -21,6 +22,8 @@ app.use('/login', login);
 app.get('/', (req, res) => {
   res.send('Rota principal');
 });
+
+email.enviarEmail('assunto bom', 'corpo da mensagem', 'paulohenrique7010@gmail.com');
 
 app.listen(8020, () =>{
   console.log("Servidor rodando na porta 8020!")
