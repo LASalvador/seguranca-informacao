@@ -37,7 +37,8 @@ function Item(props){
 
      async function realizarLogin(){
       try {
-        await api.post("login", {email: email, senha: senha})
+        const resposta = await api.post("login", {email: email, senha: senha})
+        console.log(resposta.data)
         history.push("/")
       } catch (error) {
         alert("Erro ao fazer login");
