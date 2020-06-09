@@ -6,7 +6,7 @@ const comunicado = require("./routes/comunicado");
 const validacao = require("./routes/validacao");
 const resposta = require("./routes/resposta");
 const login = require("./routes/login");
-const dpo = require("./servicos/dpo");
+const dpo = require("./routes/dpo");
 
 app.use(express.json());
 
@@ -17,7 +17,7 @@ app.use('/comunicado', comunicado);
 app.use('/resposta', resposta);
 app.use('/validar', validacao);
 app.use('/login', login);
-// app.use('/dpo', dpo);
+app.use('/dpo', dpo);
 
 app.get('/', (req, res) => {
   res.send('Rota principal');
