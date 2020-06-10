@@ -7,6 +7,7 @@ const validacao = require("./routes/validacao");
 const resposta = require("./routes/resposta");
 const login = require("./routes/login");
 const dpo = require("./routes/dpo");
+const cripto = require("./servicos/criptografia");
 
 app.use(express.json());
 
@@ -22,7 +23,6 @@ app.use('/dpo', dpo);
 app.get('/', (req, res) => {
   res.send('Rota principal');
 });
-
 
 app.listen(8020, () =>{
   console.log("Servidor rodando na porta 8020!")
