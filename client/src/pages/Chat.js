@@ -47,7 +47,8 @@ export default class Chat extends Component {
 
     async componentDidMount (){
         const hash = localStorage.getItem("xxx");
-        if (hash) {
+        const token = localStorage.getItem("ax");
+        if (hash || token) {
             this.setState({hash: hash})
         } else {
             this.setState({open: true})
@@ -55,20 +56,22 @@ export default class Chat extends Component {
         const id = this.props.match.params.id;
         const response = await api.get(`comunicado/${id}`);
         this.setState({list: response.data.lista_comunicados.respostas})
-        this.setState({dpo: 'joao'})
+        this.setState({dpo: response.data.lista_comunicados.nome_dpo});
     }
     handleChange = (event) => {
         this.setState({message: event.target.value});
     }
     handleSubmit = (event) => {
         var list = this.state.list;
-        list.push({author: 'joao', conteudo: this.state.message});
+        var user = localStorage.getItem('ux');
+
+        list.push({author: user, conteudo: this.state.message});
         this.setState({list: list});
         this.setState({message: ''});
 
         api.post('resposta/', {
             conteudo: this.state.message,
-            autor: 'joão',
+            autor: user,
             cod_comunicado: this.props.match.params.id
         })
     }

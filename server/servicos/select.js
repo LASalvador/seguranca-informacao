@@ -11,7 +11,6 @@ const selectPromise = (select) => {
           if (err) {
             return reject(err);
           }
-
           resolve(row);
         }); 
     })

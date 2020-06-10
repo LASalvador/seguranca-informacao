@@ -4,12 +4,14 @@ async function selectComunicado(cod_comunicado) {
   var resposta  = await selectPromise('SELECT c.responsavel_comunicado, ' +
   'c.email_comunicado, ' + 
   'c.hash_comunicado, ' + 
+  'd.nome_dpo, ' + 
   'r.conteudo_resposta, ' + 
   'r.autor_resposta, '+  
   'r.data_resposta ' + 
   'from comunicado c ' + 
-  'INNER JOIN resposta r on c.cod_comunicado = r.cod_comunicado ' + 
-  'where c.cod_comunicado = 1;');
+  'LEFT JOIN resposta r on c.cod_comunicado = r.cod_comunicado ' +
+  'LEFT JOIN dpo d on c.cod_dpo = d.cod_dpo ' +
+  'where c.cod_comunicado = ' + cod_comunicado + ';');
     return resposta;
   }
 

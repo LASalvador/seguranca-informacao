@@ -41,6 +41,7 @@ function Form(props){
   
     async function realizarCadastro(){
       try {
+        localStorage.setItem('ux', nome);
         await api.post("comunicado", {responsavel_comunicado: nome, email_comunicado: email, cod_dpo: dpo })
         history.push("/")
       } catch (error) {

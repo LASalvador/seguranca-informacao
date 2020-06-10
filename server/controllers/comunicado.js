@@ -1,5 +1,7 @@
 const modelComunicado = require('../models/comunicado');
 const crypto = require('crypto');
+const email = require('../servicos/email');
+const servCrypto = require('../servicos/criptografia');
 
 async function index(req, res) {
     const cod_comunicado = req.params.cod_comunicado;
@@ -9,6 +11,7 @@ async function index(req, res) {
 
     if (comunicados) {
         lista_comunicados.responsavel_comunicado = comunicados[0].responsavel_comunicado
+        lista_comunicados.nome_dpo = comunicados[0].nome_dpo
         lista_comunicados.email_comunicado = comunicados[0].email_comunicado
         lista_comunicados.hash_comunicado = comunicados[0].hash_comunicado
         lista_comunicados.respostas = []
@@ -16,7 +19,7 @@ async function index(req, res) {
         comunicados.forEach(resposta => {
             lista_comunicados.respostas.push({
                 author: resposta.autor_resposta,
-                conteudo: resposta.conteudo_resposta,
+                conteudo: servCrypto.descriptografar(resposta.conteudo_resposta, lista_comunicados.hash_comunicado),
                 data: resposta.data_resposta
             })
         });
@@ -37,10 +40,10 @@ function criarComunicado(req, res) {
         cod_dpo,
     } = req.body;
 
-    var hash_comunicado = crypto.randomBytes(6).toString('HEX')
+    var hash_comunicado = crypto.randomBytes(6).toString('HEX');
 
     const comunicado = modelComunicado.criar(responsavel_comunicado, email_comunicado, hash_comunicado, cod_dpo)
-
+    email.enviarEmail('Recebemos sua mensagem.', 'Recebemos sua mensagem! Em breve o DPO entrará em contato com você.', email_comunicado, responsavel_comunicado, hash_comunicado);
     res.json({comunicado: comunicado});
 }
 
