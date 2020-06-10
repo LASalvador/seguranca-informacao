@@ -38,7 +38,8 @@ function Item(props){
      async function realizarLogin(){
       try {
         const resposta = await api.post("login", {email: email, senha: senha})
-        localStorage.setItem('ax', resposta.data.token);
+        localStorage.setItem('ax', resposta.data.session.token);
+        localStorage.getItem('ux', resposta.data.session.nome_dpo);
         history.push("/")
       } catch (error) {
         alert("Erro ao fazer login");

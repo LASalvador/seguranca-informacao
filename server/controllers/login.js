@@ -9,7 +9,7 @@ async function validarLogin(req, res) {
     if (func){
         res.status(200);
         return res.json({
-            token: func
+            session: func
         });
     }
     else {

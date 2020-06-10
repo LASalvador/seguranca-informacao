@@ -50,7 +50,7 @@ async function login(email, senha){
                 }, authConfig.secret, {
                     expiresIn: "1h"
                 });
-                return token;
+                return { token: token, nome_dpo: currentDPO[0].nome_dpo};
             }
         }
     } catch(err){

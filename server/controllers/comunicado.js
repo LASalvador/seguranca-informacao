@@ -10,6 +10,7 @@ async function index(req, res) {
 
     if (comunicados) {
         lista_comunicados.responsavel_comunicado = comunicados[0].responsavel_comunicado
+        lista_comunicados.nome_dpo = comunicados[0].nome_dpo
         lista_comunicados.email_comunicado = comunicados[0].email_comunicado
         lista_comunicados.hash_comunicado = comunicados[0].hash_comunicado
         lista_comunicados.respostas = []
