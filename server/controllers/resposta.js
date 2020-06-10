@@ -1,9 +1,14 @@
 const modelResposta = require('../models/resposta');
+const cripto = require('../servicos/criptografia');
+
 
 function criar(req, res) {
-    const { conteudo, autor, cod_comunicado } = req.body;
+    var { conteudo, autor, cod_comunicado, hash_comunicado } = req.body;
+
+    conteudo = cripto.criptografar(conteudo, hash_comunicado);
     
-    const resposta = modelResposta.criar(conteudo, autor, cod_comunicado);
+
+    const resposta = modelResposta.criar(conteudo, autor, cod_comunicado, hash_comunicado);
 
     modelResposta.updateTableComunicado(cod_comunicado);
     
