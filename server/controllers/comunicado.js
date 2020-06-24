@@ -1,4 +1,5 @@
 const modelComunicado = require('../models/comunicado');
+const modelResposta = require('../models/resposta');
 const crypto = require('crypto');
 const email = require('../servicos/email');
 const servCrypto = require('../servicos/criptografia');
@@ -33,18 +34,22 @@ async function retornarTodosComunicados(req, res){
     res.json({retorno:retorno});
 }
 
-function criarComunicado(req, res) {
+async function criarComunicado(req, res) {
     const {
         responsavel_comunicado,
         email_comunicado,
         cod_dpo,
+        desc,
     } = req.body;
 
     var hash_comunicado = crypto.randomBytes(6).toString('HEX');
 
-    const comunicado = modelComunicado.criar(responsavel_comunicado, email_comunicado, hash_comunicado, cod_dpo)
+    const comunicado = await modelComunicado.criar(responsavel_comunicado, email_comunicado, hash_comunicado, cod_dpo)
+    
+    const resposta = modelResposta.criar(desc, responsavel_comunicado, comunicado.cod_comunicado);
+
     email.enviarEmail('Recebemos sua mensagem.', 'Recebemos sua mensagem! Em breve o DPO entrará em contato com você.', email_comunicado, responsavel_comunicado, hash_comunicado);
-    res.json({comunicado: comunicado});
+    res.json({comunicado: comunicado, resposta: resposta});
 }
 
 module.exports = {

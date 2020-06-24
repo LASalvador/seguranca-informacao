@@ -1,15 +1,14 @@
-import React, { Component, useState } from 'react';
+import React, { Component } from 'react';
 import Button from '@material-ui/core/Button';
-import { makeStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/styles';
 import FormControl from '@material-ui/core/FormControl';
 import TextField from '@material-ui/core/TextField';
 import InputLabel from '@material-ui/core/InputLabel';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import api from '../services/http'
-import { useHistory } from 'react-router-dom';
 
-const useStyles = makeStyles({
+const styles = {
     root: {
       fontSize: 15, 
       textAlign: "center",
@@ -28,78 +27,15 @@ const useStyles = makeStyles({
         textAlign: "center",
         height: 50
       },
-});
+};
 
-function Form(props){
-  const history = useHistory();
-
-    const classes = useStyles();
-    const [nome, setNome] = useState("");
-    const [email, setEmail] = useState("");
-    const [descricao, setDescricao] = useState("");
-    const [dpo, setDpo] = useState("");
-  
-    async function realizarCadastro(){
-      try {
-        localStorage.setItem('ux', nome);
-        await api.post("comunicado", {responsavel_comunicado: nome, email_comunicado: email, cod_dpo: dpo })
-        history.push("/")
-      } catch (error) {
-        alert("Erro ao fazer Cadastro");
-      }
-    }
-
-    return (
-        <FormControl className={classes.root}>
-            <h1 className={classes.titulo}>Cadastro</h1>
-            <TextField 
-              id="nome" 
-              label="Nome" 
-              className={classes.espaco}
-              onChange={evento => setNome(evento.target.value)} 
-            />
-            <TextField 
-              id="email" 
-              label="E-mail" 
-              type="email"
-              className={classes.espaco}
-              onChange={evento => setEmail(evento.target.value)} 
-            />
-            <FormControl className={classes.espaco}>
-              <InputLabel 
-                id="demo-simple-select-label"
-              >
-                Selecione o DPO
-              </InputLabel>
-              <Select>
-                {props.dpos.map(item => (
-                  <MenuItem value={item.id} onChange={evento => setDpo(evento.target.value)} >{item.nome}</MenuItem>
-                ))}
-
-              </Select>
-            </FormControl>
-            <TextField 
-              className={classes.espaco} 
-              id="descricao" 
-              label="Descrição" 
-              multiline={true} 
-              rows={3}
-              onChange={evento => setDescricao(evento.target.value)} 
-            />
-            <Button 
-              variant="contained" 
-              color="primary" 
-              className={classes.espacobtt}
-              onClick={realizarCadastro}
-            >
-              Cadastrar
-            </Button>
-        </FormControl>
-    )
-}
-export default class CadastroComunicado extends Component {
+class CadastroComunicado extends Component {
     state = {
       dpos: [],
+      nome: "",
+      email: "",
+      descricao: "",
+      dpo: ""
     }
 
     async componentDidMount () {
@@ -113,9 +49,79 @@ export default class CadastroComunicado extends Component {
 
       this.setState({dpos: dpos})
     }
+
+    realizarCadastro = async () => {
+      try {
+        localStorage.setItem('ux', this.state.nome);
+        await api.post("comunicado", {
+          responsavel_comunicado: this.state.nome, 
+          email_comunicado: this.state.email, 
+          cod_dpo: this.state.dpo, 
+          desc: this.state.descricao
+        })
+        // history.push("/")
+      } catch (error) {
+        alert("Erro ao fazer Cadastro");
+      }
+    }
+
     render () {
-        return (
-            <Form dpos={this.state.dpos}/>
-        );
+      const { classes } = this.props;
+      return (
+        <FormControl className={classes.root}>
+          <h1 className={classes.titulo}>Cadastro</h1>
+          <TextField 
+            id="nome" 
+            label="Nome" 
+            className={classes.espaco}
+            onChange={event => this.setState({nome: event.target.value})} 
+          />
+          <TextField 
+            id="email" 
+            label="E-mail" 
+            type="email"
+            className={classes.espaco}
+            onChange={event => this.setState({email: event.target.value})} 
+          />
+          <FormControl className={classes.espaco}>
+            <InputLabel 
+              id="demo-simple-select-label"
+            >
+              Selecione o DPO
+            </InputLabel>
+            <Select
+              onChange={event => this.setState({dpo: event.target.value})}
+            >
+              {this.state.dpos.map(item => (
+                <MenuItem 
+                  key={item.id} 
+                  value={item.id}  
+                >
+                  {item.nome}
+                </MenuItem>
+              ))}
+
+            </Select>
+          </FormControl>
+          <TextField 
+            className={classes.espaco} 
+            id="descricao" 
+            label="Descrição" 
+            multiline={true} 
+            rows={3}
+            onChange={event => this.setState({descricao: event.target.value})} 
+          />
+          <Button 
+            variant="contained" 
+            color="primary" 
+            className={classes.espacobtt}
+            onClick={this.realizarCadastro}
+          >
+            Cadastrar
+          </Button>
+        </FormControl>
+      );
     }
 }
+
+export default withStyles(styles)(CadastroComunicado);
