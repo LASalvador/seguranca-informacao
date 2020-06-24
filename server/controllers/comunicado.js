@@ -10,16 +10,10 @@ async function index(req, res) {
     var lista_comunicados = {};
 
     if (comunicados) {
-<<<<<<< HEAD
-        lista_comunicados.responsavel_comunicado = comunicados.responsavel_comunicado
-        lista_comunicados.email_comunicado = comunicados.email_comunicado
-        lista_comunicados.hash_comunicado = comunicados.hash_comunicado
-=======
         lista_comunicados.responsavel_comunicado = comunicados[0].responsavel_comunicado
         lista_comunicados.nome_dpo = comunicados[0].nome_dpo
         lista_comunicados.email_comunicado = comunicados[0].email_comunicado
         lista_comunicados.hash_comunicado = comunicados[0].hash_comunicado
->>>>>>> 9445c771248acf1045169817c82625b40e74ecaa
         lista_comunicados.respostas = []
 
         comunicados.forEach(resposta => {
