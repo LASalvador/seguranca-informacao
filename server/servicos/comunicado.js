@@ -9,14 +9,8 @@ async function selectComunicado(cod_comunicado) {
   'r.autor_resposta, '+  
   'r.data_resposta ' + 
   'from comunicado c ' + 
-<<<<<<< HEAD
   'INNER JOIN resposta r on c.cod_comunicado = r.cod_comunicado ' + 
   'where c.cod_comunicado = '+cod_comunicado+';');
-=======
-  'LEFT JOIN resposta r on c.cod_comunicado = r.cod_comunicado ' +
-  'LEFT JOIN dpo d on c.cod_dpo = d.cod_dpo ' +
-  'where c.cod_comunicado = ' + cod_comunicado + ';');
->>>>>>> 9445c771248acf1045169817c82625b40e74ecaa
     return resposta;
   }
 
