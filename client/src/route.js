@@ -14,7 +14,7 @@ export default function Routes() {
         <Switch>
             <Route path='/chat/:id' exact component={Chat} />
             <Route path='/' exact component={Home} />
-            <Route path='/lista' exact component={ListaConversa} />
+            <Route path='/list' exact component={ListaConversa} />
             <Route path='/cadastrocomunicado' exact component={cadastrocomunicado} />
             <Route path='/cadastre-se' exact component={cadastroDPO} />
             <Route path='/login' exact component={Login} />
