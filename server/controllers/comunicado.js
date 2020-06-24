@@ -1,3 +1,4 @@
+const cripto = require('../servicos/criptografia');
 const modelComunicado = require('../models/comunicado');
 const modelResposta = require('../models/resposta');
 const crypto = require('crypto');
@@ -46,7 +47,9 @@ async function criarComunicado(req, res) {
 
     const comunicado = await modelComunicado.criar(responsavel_comunicado, email_comunicado, hash_comunicado, cod_dpo)
     
-    const resposta = modelResposta.criar(desc, responsavel_comunicado, comunicado.cod_comunicado);
+    const conteudo = cripto.criptografar(desc, hash_comunicado);
+
+    const resposta = modelResposta.criar(conteudo, responsavel_comunicado, comunicado.cod_comunicado);
 
     email.enviarEmail('Recebemos sua mensagem.', 'Recebemos sua mensagem! Em breve o DPO entrará em contato com você.', email_comunicado, responsavel_comunicado, hash_comunicado);
     res.json({comunicado: comunicado, resposta: resposta});
