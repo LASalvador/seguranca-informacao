@@ -9,7 +9,7 @@ async function selectComunicado(cod_comunicado) {
   'r.data_resposta ' + 
   'from comunicado c ' + 
   'INNER JOIN resposta r on c.cod_comunicado = r.cod_comunicado ' + 
-  'where c.cod_comunicado = 1;');
+  'where c.cod_comunicado = '+cod_comunicado+';');
     return resposta;
   }
 

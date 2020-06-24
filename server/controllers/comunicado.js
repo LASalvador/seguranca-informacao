@@ -9,9 +9,9 @@ async function index(req, res) {
     var lista_comunicados = {};
 
     if (comunicados) {
-        lista_comunicados.responsavel_comunicado = comunicados[0].responsavel_comunicado
-        lista_comunicados.email_comunicado = comunicados[0].email_comunicado
-        lista_comunicados.hash_comunicado = comunicados[0].hash_comunicado
+        lista_comunicados.responsavel_comunicado = comunicados.responsavel_comunicado
+        lista_comunicados.email_comunicado = comunicados.email_comunicado
+        lista_comunicados.hash_comunicado = comunicados.hash_comunicado
         lista_comunicados.respostas = []
 
         comunicados.forEach(resposta => {
