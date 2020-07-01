@@ -27,7 +27,7 @@ app.get('/', (req, res) => {
 });
 
 
-logao.sendLog('info', 'TESTE LOGaO');
+// logao.sendLog('info', 'TESTE LOGaO');
 
 app.listen(8020, () =>{
   console.log("Servidor rodando na porta 8020!")
