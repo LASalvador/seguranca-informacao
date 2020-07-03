@@ -10,7 +10,6 @@ const dpo = require("./routes/dpo");
 const cripto = require('./servicos/criptografia');
 const logao = require('./servicos/logger');
 
-
 app.use(express.json());
 
 app.use(cors());

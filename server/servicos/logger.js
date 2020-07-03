@@ -1,6 +1,8 @@
 let winston = require('winston');
 const sqlite3 = require('sqlite3').verbose();
 const crypto = require('crypto');
+const insertPromise = require('../servicos/insert');
+
 const db = new sqlite3.Database('db/AppDB.db', sqlite3.OPEN_READWRITE, (err) => {
     if (err) {
         console.error(err.message);
@@ -9,7 +11,7 @@ const db = new sqlite3.Database('db/AppDB.db', sqlite3.OPEN_READWRITE, (err) => 
   
 
 
-function sendLog(level, message, nameFile, cod_comunicado) {
+async function sendLog(level, message, nameFile, cod_comunicado) {
     let logger = winston.createLogger({
         level: level,
         format: winston.format.combine(
@@ -24,15 +26,18 @@ function sendLog(level, message, nameFile, cod_comunicado) {
         ]
     });
     
-    var hash_arquivo = "testelogloglog";
+    var hash_arquivo = "testelog";
 
-    db.run('INSERT INTO log (cod_comunicado, nome_arquivo, hash_arquivo) ' +
+    await insertPromise('INSERT INTO log (cod_comunicado, nome_arquivo, hash_arquivo) ' +
+    'values ('+cod_comunicado + ',"' +nameFile + '","' +hash_arquivo+'")');
+    
+    /* db.run('INSERT INTO log (cod_comunicado, nome_arquivo, hash_arquivo) ' +
         'values ('+cod_comunicado + ',"' +nameFile + '","' +hash_arquivo+'");',
         function (err) {
             if (err) {
                 return console.log(err.message);
             }
-        });
+        }); */
 
     logger.log(level, message);
 }
