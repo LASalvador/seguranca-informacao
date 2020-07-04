@@ -7,8 +7,10 @@ const validacao = require("./routes/validacao");
 const resposta = require("./routes/resposta");
 const login = require("./routes/login");
 const dpo = require("./routes/dpo");
+const log = require("./routes/log");
 const cripto = require('./servicos/criptografia');
 const logao = require('./servicos/logger');
+
 
 app.use(express.json());
 
