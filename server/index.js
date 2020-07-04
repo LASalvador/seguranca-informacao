@@ -22,6 +22,7 @@ app.use('/resposta', resposta);
 app.use('/validar', validacao);
 app.use('/login', login);
 app.use('/dpo', dpo);
+app.use('/log', log);
 
 app.get('/', (req, res) => {
   res.send('Rota principal');
