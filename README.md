@@ -47,6 +47,9 @@ Além disso, teremos uma tela com a lista do DPOs cadastrados afim de torná-los
   - Adição de criptografia nas mensagens
   - Adição de criptografia para salvar senhas
   - Adição de envio de email ao cadastrar um comunicado
+  **Sprint 5**
+  - Geração de LOG
+  - Atualização de alguns controllers
 
 ### FrontEnd
    **Sprint 1**
@@ -79,17 +82,27 @@ Além disso, teremos uma tela com a lista do DPOs cadastrados afim de torná-los
      - Ligação com a API para validar o chave de acesso gerada
   **Sprint 4** 
     - Adição de controle de sessão do usuário usando JWT gerado
-  
-## BurnDown 
+  **Sprint 5**
+    - Criação de landing page
+    - Atualização de rotas
+    - Finalização de cadastro de comunicado
 
-### Tabela
-![Tabela Burndown](images/tabela.jpg)
-### Gráfico
-![Grafico Burndown](images/grafico.jpg)
 ## Tecnologias
 
 * React.js
 * Node.js
+
+## Execução
+### Execução client
+
+>> cd client 
+>> npm install
+>> npm run start
+
+### Execução
+>>> cd server
+>>> npm install
+>>> node index.js
 
 ## Integrantes
 * [Gabriel Carvalho](https://github.com/Gamebielo)
