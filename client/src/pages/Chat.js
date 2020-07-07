@@ -8,6 +8,7 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import Comment from '@material-ui/icons/Comment';
 import ChatCard from '../components/ChatCard';
 import api from '../services/http'
 
@@ -108,6 +109,10 @@ export default class Chat extends Component {
                     </Grid>
                     <Grid item xs={2}>
                         <Button onClick={this.handleSubmit}> Enviar </Button>
+                        <Button 
+                            color="primary"
+                            endIcon={<Comment />}
+                        > Logs </Button>
                     </Grid>
                 </Grid>
                 <Dialog 
