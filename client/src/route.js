@@ -8,6 +8,7 @@ import Home from './pages/Home';
 import cadastrocomunicado from './pages/CadastroComunicado';
 import cadastroDPO from './pages/CadastroDPO';
 import Login from './pages/Login';
+import Logs from './pages/Logs'
 
 export default function Routes() {
     return (
@@ -18,6 +19,7 @@ export default function Routes() {
             <Route path='/cadastrocomunicado' exact component={cadastrocomunicado} />
             <Route path='/cadastre-se' exact component={cadastroDPO} />
             <Route path='/login' exact component={Login} />
+            <Route path='/logs' exact component={Logs} />
         </Switch>
     );
 }
