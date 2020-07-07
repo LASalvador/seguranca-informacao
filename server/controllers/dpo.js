@@ -58,6 +58,7 @@ function criarDPO(req, res) {
         desc_dpo,
         telefone_dpo
     );
+
     res.json({dpo: dpo});
 }
 

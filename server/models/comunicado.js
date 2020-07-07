@@ -3,6 +3,10 @@ const selectPromise = require('../servicos/select');
 const insertPromise = require('../servicos/insert');
 const servicoComunicado = require('../servicos/comunicado');
 const dataService = require('../servicos/data');
+const logService = require('../servicos/logger');
+const EventLogger = require('eventlogger');
+
+
 const db = new sqlite3.Database('db/AppDB.db', sqlite3.OPEN_READWRITE, (err) => {
     if (err) {
         console.error(err.message);
@@ -26,6 +30,12 @@ async function criar(responsavel_comunicado, email_comunicado, hash_comunicado, 
         hash_comunicado: hash_comunicado,
         cod_dpo: cod_dpo
     };
+
+    logService.sendLog('info', 'log comunicado criado!', comunicado.hash_comunicado, comunicado.cod_comunicado);
+    
+    const log = new EventLogger(comunicado.hash_comunicado);
+    
+    log.success('Cadastro do comunicado realizado com sucesso!');
 
     return comunicado;
 }
