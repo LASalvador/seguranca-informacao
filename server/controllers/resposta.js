@@ -19,10 +19,10 @@ async function criar(req, res) {
     modelResposta.updateTableComunicado(cod_comunicado);
 
     logService.sendLog('info', `Resposta "${conteudo}" adicionada ao comunicado por ${autor}!`, hash_comunicado, cod_comunicado);
-    
+
     res.status(200).json({ resposta: resposta });
 }
 
 module.exports = {
-    criar,
+    criar
 };

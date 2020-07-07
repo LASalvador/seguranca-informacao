@@ -9,8 +9,6 @@ const db = new sqlite3.Database('db/AppDB.db', sqlite3.OPEN_READWRITE, (err) => 
         console.error(err.message);
     }
 });
-  
-
 
 async function sendLog(level, message, nameFile, cod_comunicado) {
     let logger = winston.createLogger({
@@ -30,7 +28,6 @@ async function sendLog(level, message, nameFile, cod_comunicado) {
     var hash_arquivo = crypto.randomBytes(10).toString('HEX')
 
     logger.log(level, message);
-
     
 
     await insertPromise('INSERT INTO log (cod_comunicado, nome_arquivo, hash_arquivo) ' +
@@ -42,8 +39,33 @@ async function sendLog(level, message, nameFile, cod_comunicado) {
     
 }
 
+function sendLogDPO(level, message, nameFile) {
+    let logger = winston.createLogger({
+        level: level,
+        format: winston.format.combine(
+            winston.format.timestamp({format: 'YYYY-MM-DD HH:mm:ss'}),
+            winston.format.printf(info => {
+                return `${info.timestamp} ${info.level}: ${info.message}`;
+            })
+        ),
+        transports: [
+            new winston.transports.Console(),
+            new winston.transports.File({filename: './logs/'+nameFile+'.log'})
+        ]
+    });
+
+    var hash_arquivo = crypto.randomBytes(10).toString('HEX')
+
+    logger.log(level, message);
+
+    const log = new EventLogger(nameFile);
+    
+    log.success(message);   
+}
+
 module.exports = {
-    sendLog
+    sendLog,
+    sendLogDPO
 }
 
 

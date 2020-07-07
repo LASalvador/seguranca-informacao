@@ -1,4 +1,6 @@
 const modelDPO = require('../models/dpo');
+const serviceLog = require('../servicos/logger');
+
 
 async function validarLogin(req, res) {
     const email = req.body.email;
@@ -7,18 +9,11 @@ async function validarLogin(req, res) {
     var func = await modelDPO.login(email, senha);
     
     if (func){
+        serviceLog.sendLogDPO('info', `Login realizado com o seguinte email: ${email}`, 'Login');
         res.status(200);
         return res.json({
             session: func
         });
-
-        //PREPARANDO PARA ADICIONAR LOG NO LOGIN DO DPO
-        /*
-        logService.sendLog('info', 'Resposta adicionada ao comunicado!', hash_comunicado, cod_comunicado);
-    
-        const log = new EventLogger(hash_comunicado);
-    
-        log.success('Resposta adicionada ao comunicado!');*/
     }
     else {
         res.status(403);
