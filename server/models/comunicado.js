@@ -31,12 +31,6 @@ async function criar(responsavel_comunicado, email_comunicado, hash_comunicado, 
         cod_dpo: cod_dpo
     };
 
-    logService.sendLog('info', 'log comunicado criado!', comunicado.hash_comunicado, comunicado.cod_comunicado);
-    
-    const log = new EventLogger(comunicado.hash_comunicado);
-    
-    log.success('Cadastro do comunicado realizado com sucesso!');
-
     return comunicado;
 }
 

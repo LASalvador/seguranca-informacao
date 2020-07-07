@@ -31,13 +31,14 @@ async function sendLog(level, message, nameFile, cod_comunicado) {
 
     logger.log(level, message);
 
-    const log = new EventLogger(nameFile);
     
-    log.success(message);
 
     await insertPromise('INSERT INTO log (cod_comunicado, nome_arquivo, hash_arquivo) ' +
     'values ('+cod_comunicado + ',"' +nameFile + '","' +hash_arquivo+'")');
 
+    const log = new EventLogger(nameFile);
+    
+    log.success(message);
     
 }
 

@@ -2,30 +2,36 @@ import React, { Component } from 'react';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
-// import api from '../services/http'
+import api from '../services/http'
 
 export default class Chat extends Component {
 
     state = {
-        
+        array_log: []
     }
 
     async componentDidMount (){
+        // const id = this.props.match.params.id;
+        const id = '99728418fe78'
+        const response = await api.get(`log/${id}`);
+        const logs = response.data.data.split('\n');
+        this.setState({array_log: logs})
     }
 
     render () {
         return (
             <section>
                 <List>
-                <ListItem>
-                    <ListItemText primary="Photos" secondary="Jan 9, 2014" />
-                </ListItem>
-                <ListItem>
-                    <ListItemText primary="Work" secondary="Jan 7, 2014" />
-                </ListItem>
-                <ListItem>
-                    <ListItemText primary="Vacation" secondary="July 20, 2014" />
-                </ListItem>
+                    {this.state.array_log.map((item, index) => {
+                        let dados = item.split(' ')
+                        let primary = dados.slice(3,dados.lenght).toString().replaceAll(",", " ")
+                        let second = dados.slice(0,2).toString()
+                        return (
+                            <ListItem key={index}>
+                                <ListItemText primary={primary} secondary={second} />
+                            </ListItem>
+                        )
+                    })}
                 </List>
             </section>
         );
