@@ -2,6 +2,7 @@ let winston = require('winston');
 const sqlite3 = require('sqlite3').verbose();
 const crypto = require('crypto');
 const insertPromise = require('../servicos/insert');
+const EventLogger = require('eventlogger');
 
 const db = new sqlite3.Database('db/AppDB.db', sqlite3.OPEN_READWRITE, (err) => {
     if (err) {
@@ -28,10 +29,16 @@ async function sendLog(level, message, nameFile, cod_comunicado) {
 
     var hash_arquivo = crypto.randomBytes(10).toString('HEX')
 
+    logger.log(level, message);
+
+    const log = new EventLogger(nameFile);
+    
+    log.success(message);
+
     await insertPromise('INSERT INTO log (cod_comunicado, nome_arquivo, hash_arquivo) ' +
     'values ('+cod_comunicado + ',"' +nameFile + '","' +hash_arquivo+'")');
 
-    logger.log(level, message);
+    
 }
 
 module.exports = {

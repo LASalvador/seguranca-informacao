@@ -2,7 +2,6 @@ const modelResposta = require('../models/resposta');
 const modelComunicado = require('../models/comunicado');
 const cripto = require('../servicos/criptografia');
 const logService = require('../servicos/logger');
-const EventLogger = require('eventlogger');
 
 
 async function criar(req, res) {
@@ -19,11 +18,7 @@ async function criar(req, res) {
 
     modelResposta.updateTableComunicado(cod_comunicado);
 
-    logService.sendLog('info', 'Resposta adicionada ao comunicado!', hash_comunicado, cod_comunicado);
-    
-    const log = new EventLogger(hash_comunicado);
-    
-    log.success('Resposta adicionada ao comunicado!');
+    logService.sendLog('info', `Resposta "${conteudo}" adicionada ao comunicado por ${autor}!`, hash_comunicado, cod_comunicado);
     
     res.status(200).json({ resposta: resposta });
 }

@@ -4,6 +4,7 @@ const modelResposta = require('../models/resposta');
 const crypto = require('crypto');
 const email = require('../servicos/email');
 const servCrypto = require('../servicos/criptografia');
+const logService = require('../servicos/logger');
 
 async function index(req, res) {
     const cod_comunicado = req.params.cod_comunicado;
@@ -51,6 +52,8 @@ async function criarComunicado(req, res) {
 
     const resposta = modelResposta.criar(conteudo, responsavel_comunicado, comunicado.cod_comunicado);
 
+    logService.sendLog('info', `Comunicado "${comunicado.cod_comunicado}" criado por ${responsavel_comunicado}!`, hash_comunicado, comunicado.cod_comunicado);
+    
     email.enviarEmail('Recebemos sua mensagem.', 'Recebemos sua mensagem! Em breve o DPO entrará em contato com você.', email_comunicado, responsavel_comunicado, hash_comunicado);
     res.json({comunicado: comunicado, resposta: resposta});
 }
