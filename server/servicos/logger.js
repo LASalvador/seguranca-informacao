@@ -25,19 +25,11 @@ async function sendLog(level, message, nameFile, cod_comunicado) {
             new winston.transports.File({filename: './logs/'+nameFile+'.log'})
         ]
     });
-    
-    var hash_arquivo = "testelog";
+
+    var hash_arquivo = crypto.randomBytes(10).toString('HEX')
 
     await insertPromise('INSERT INTO log (cod_comunicado, nome_arquivo, hash_arquivo) ' +
     'values ('+cod_comunicado + ',"' +nameFile + '","' +hash_arquivo+'")');
-    
-    /* db.run('INSERT INTO log (cod_comunicado, nome_arquivo, hash_arquivo) ' +
-        'values ('+cod_comunicado + ',"' +nameFile + '","' +hash_arquivo+'");',
-        function (err) {
-            if (err) {
-                return console.log(err.message);
-            }
-        }); */
 
     logger.log(level, message);
 }
