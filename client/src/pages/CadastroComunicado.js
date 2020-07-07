@@ -69,7 +69,7 @@ class CadastroComunicado extends Component {
       const { classes } = this.props;
       return (
         <FormControl className={classes.root}>
-          <h1 className={classes.titulo}>Cadastro</h1>
+          <h1 className={classes.titulo}>Cadastro de Comunicado</h1>
           <TextField 
             id="nome" 
             label="Nome" 
