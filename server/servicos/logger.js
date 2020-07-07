@@ -28,7 +28,6 @@ async function sendLog(level, message, nameFile, cod_comunicado) {
     var hash_arquivo = crypto.randomBytes(10).toString('HEX')
 
     logger.log(level, message);
-    
 
     await insertPromise('INSERT INTO log (cod_comunicado, nome_arquivo, hash_arquivo) ' +
     'values ('+cod_comunicado + ',"' +nameFile + '","' +hash_arquivo+'")');
@@ -36,7 +35,6 @@ async function sendLog(level, message, nameFile, cod_comunicado) {
     const log = new EventLogger(nameFile);
     
     log.success(message);
-    
 }
 
 function sendLogDPO(level, message, nameFile) {

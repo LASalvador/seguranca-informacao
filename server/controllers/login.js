@@ -1,7 +1,6 @@
 const modelDPO = require('../models/dpo');
 const serviceLog = require('../servicos/logger');
 
-
 async function validarLogin(req, res) {
     const email = req.body.email;
     const senha = req.body.senha;

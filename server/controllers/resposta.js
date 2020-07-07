@@ -8,7 +8,6 @@ async function criar(req, res) {
     var { conteudo, autor, cod_comunicado} = req.body;
    
     const result = await modelComunicado.listar(cod_comunicado);
-    
     const hash_comunicado = result[0].hash_comunicado;
     
 
@@ -18,7 +17,7 @@ async function criar(req, res) {
 
     modelResposta.updateTableComunicado(cod_comunicado);
 
-    logService.sendLog('info', `Resposta "${conteudo}" adicionada ao comunicado por ${autor}!`, hash_comunicado, cod_comunicado);
+    logService.sendLog('info', `Resposta adicionada ao comunicado por ${autor}!`, hash_comunicado, cod_comunicado);
 
     res.status(200).json({ resposta: resposta });
 }

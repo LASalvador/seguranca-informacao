@@ -1,7 +1,6 @@
 const selectPromise = require('../servicos/select');
 const authConfig = require('./config/auth.json');
 const servicoDPO = require('../servicos/dpo');
-const sqlite3 = require('sqlite3').verbose();
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 
@@ -39,7 +38,6 @@ function deletar(cod_dpo){
 
 async function login(email, senha){
     try{
-        //let currentDPO = await selectPromise('select * from dpo where email_dpo = "'+email+'" and senha = "'+senha+'"');
         let currentDPO = await selectPromise('select * from dpo where email_dpo = "'+email+'"');
 
         if (currentDPO) {
