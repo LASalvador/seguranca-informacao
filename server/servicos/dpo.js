@@ -16,8 +16,9 @@ function createDPO(nome_dpo, email_dpo, senha, desc_dpo, telefone_dpo){
         return console.log(err.message);
       }
 
-      else
-        serviceLog.sendLogDPO('info', `DPO criado!: ${cod_dpo} - ${nome_dpo}`, 'DPO_Cadastrar');
+      else{
+        serviceLog.sendLogDPO('info', `DPO criado!: ${nome_dpo}`, 'DPO_Cadastrar');
+      }
 
   });
 }
@@ -72,8 +73,8 @@ async function selectDPO(cod_dpo) {
   }
 
 function deleteDPO(cod_dpo){
-  serviceLog.sendLogDPO('info', `DPO deletado!: ${cod_dpo}`);
-  return db.run('DELETE from dpo where cod_dpo = '+cod_dpo, 'DPO_Deletar');
+  serviceLog.sendLogDPO('info', `DPO deletado!: ${cod_dpo}`,'DPO_Deletar');
+  return db.run('DELETE from dpo where cod_dpo = '+cod_dpo);  
 }
 
 module.exports = {
