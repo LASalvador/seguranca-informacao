@@ -19,7 +19,7 @@ function Item(props) {
   const classes = useStyles();
   const conteudo = props.cardList.map((cardList) =>
   <header key={cardList.id}>
-    <Link to={`/chat/:${cardList.id}`}>
+    <Link to={`/chat/${cardList.id}`}>
       <Card className={classes.root}>
         <CardContent>
           <div>
