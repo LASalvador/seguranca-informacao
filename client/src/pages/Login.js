@@ -39,7 +39,7 @@ function Item(props){
       try {
         const resposta = await api.post("login", {email: email, senha: senha})
         localStorage.setItem('ax', resposta.data.session.token);
-        localStorage.getItem('ux', resposta.data.session.nome_dpo);
+        localStorage.setItem('ux', resposta.data.session.nome_dpo);
         history.push("/list")
       } catch (error) {
         alert("Erro ao fazer login");

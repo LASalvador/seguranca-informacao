@@ -46,20 +46,21 @@ class CadastroComunicado extends Component {
           nome: item.nome_dpo
         }
       })
-
       this.setState({dpos: dpos})
     }
 
     realizarCadastro = async () => {
       try {
         localStorage.setItem('ux', this.state.nome);
-        await api.post("comunicado", {
+        const response = await api.post("comunicado", {
           responsavel_comunicado: this.state.nome, 
           email_comunicado: this.state.email, 
           cod_dpo: this.state.dpo, 
           desc: this.state.descricao
-        })
-        // history.push("/")
+        });
+        
+        alert("Cadastro realizado com sucesso! Consulte informações no email")
+        this.props.history.push(`/chat/${response.data.comunicado.cod_comunicado}`)
       } catch (error) {
         alert("Erro ao fazer Cadastro");
       }

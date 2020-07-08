@@ -20,7 +20,8 @@ export default class Chat extends Component {
         message: '',
         open: false,
         hash: '',
-        text: ''
+        text: '',
+        hash_comunicado: ''
     }
 
     handleClickOpen = () => {
@@ -58,6 +59,7 @@ export default class Chat extends Component {
         const response = await api.get(`comunicado/${id}`);
         this.setState({list: response.data.lista_comunicados.respostas})
         this.setState({dpo: response.data.lista_comunicados.nome_dpo});
+        this.setState({hash_comunicado: response.data.lista_comunicados.hash_comunicado});
     }
     handleChange = (event) => {
         this.setState({message: event.target.value});
@@ -76,6 +78,11 @@ export default class Chat extends Component {
             cod_comunicado: this.props.match.params.id
         })
     }
+
+    handleLog = (event) => {
+        this.props.history.push(`/logs/${this.state.hash_comunicado}`);
+    }
+
     render () {
         return (
             <section>
@@ -112,7 +119,10 @@ export default class Chat extends Component {
                         <Button 
                             color="primary"
                             endIcon={<Comment />}
-                        > Logs </Button>
+                            onClick={this.handleLog}
+                        > 
+                            Logs 
+                        </Button>
                     </Grid>
                 </Grid>
                 <Dialog 

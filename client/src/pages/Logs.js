@@ -11,9 +11,9 @@ export default class Chat extends Component {
     }
 
     async componentDidMount (){
-        // const id = this.props.match.params.id;
-        const id = '99728418fe78'
-        const response = await api.get(`log/${id}`);
+        const hash = this.props.match.params.hash;
+        // const hash = '99728418fe78'
+        const response = await api.get(`log/${hash}`);
         const logs = response.data.data.split('\n');
         this.setState({array_log: logs})
     }

@@ -19,7 +19,7 @@ export default function Routes() {
             <Route path='/cadastrocomunicado' exact component={cadastrocomunicado} />
             <Route path='/cadastre-se' exact component={cadastroDPO} />
             <Route path='/login' exact component={Login} />
-            <Route path='/logs' exact component={Logs} />
+            <Route path='/logs/:hash' exact component={Logs} />
         </Switch>
     );
 }
