@@ -86,9 +86,9 @@ Além disso, teremos uma tela com a lista do DPOs cadastrados afim de torná-los
    - Adição de controle de sessão do usuário usando JWT gerado
     
   **Sprint 5**
-    - Criação de landing page
-    - Atualização de rotas
-    - Finalização de cadastro de comunicado
+   - Criação de landing page
+   - Atualização de rotas
+   - Finalização de cadastro de comunicado
 
 ## Tecnologias
 
