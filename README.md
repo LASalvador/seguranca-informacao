@@ -47,6 +47,7 @@ Além disso, teremos uma tela com a lista do DPOs cadastrados afim de torná-los
   - Adição de criptografia nas mensagens
   - Adição de criptografia para salvar senhas
   - Adição de envio de email ao cadastrar um comunicado
+  
   **Sprint 5**
   - Geração de LOG
   - Atualização de alguns controllers
@@ -80,8 +81,10 @@ Além disso, teremos uma tela com a lista do DPOs cadastrados afim de torná-los
       - Ligação com a API para realizar o cadastro
    - Tela de chat
      - Ligação com a API para validar o chave de acesso gerada
+     
   **Sprint 4** 
     - Adição de controle de sessão do usuário usando JWT gerado
+    
   **Sprint 5**
     - Criação de landing page
     - Atualização de rotas
