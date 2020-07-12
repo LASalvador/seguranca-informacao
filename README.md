@@ -106,7 +106,30 @@ Além disso, teremos uma tela com a lista do DPOs cadastrados afim de torná-los
 
 ## Integrantes
 * [Gabriel Carvalho](https://github.com/Gamebielo)
+
+
+  [![LinkedIn][linkedin-shield]][linkedin-biel]
 * [Lucas Salvador](https://github.com/LASalvador)
+  
+  
+  [![LinkedIn][linkedin-shield]][linkedin-salva]
 * [Lucas Ribeiro](https://github.com/lrsonnewend)
+
+
+  [![LinkedIn][linkedin-shield]][linkedin-sonne]
 * [Mayara Brígida](https://github.com/mayaramedeiros)
+
+
+  [![LinkedIn][linkedin-shield]][linkedin-brigida]
 * [Paulo Henrique Correia](https://github.com/PauloHenrique7010)
+
+
+  [![LinkedIn][linkedin-shield]][linkedin-paulo]
+
+
+[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
+[linkedin-salva]: https://www.linkedin.com/in/lassalvador/
+[linkedin-brigida]: https://www.linkedin.com/in/mayara-br%C3%ADgida-398733182/
+[linkedin-paulo]: https://www.linkedin.com/in/paulo-henrique-36355316b/
+[linkedin-biel]: https://www.linkedin.com/in/gabriel-carvalho-b937a5160/
+[linkedin-sonne]: https://www.linkedin.com/in/lucas-sonnewend-a87a66180/
