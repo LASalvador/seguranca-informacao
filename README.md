@@ -17,6 +17,28 @@ Um DPO poderá fazer seu cadastro na plataforma e cadastrar as empresas para qua
 
 Além disso, teremos uma tela com a lista do DPOs cadastrados afim de torná-los acessíveis para contratação de novas empresas.
 
+## Integrantes
+* [Gabriel Carvalho](https://github.com/Gamebielo)
+
+
+  [![LinkedIn][linkedin-shield]][linkedin-biel]
+* [Lucas Salvador](https://github.com/LASalvador)
+  
+  
+  [![LinkedIn][linkedin-shield]][linkedin-salva]
+* [Lucas Ribeiro](https://github.com/lrsonnewend)
+
+
+  [![LinkedIn][linkedin-shield]][linkedin-sonne]
+* [Mayara Brígida](https://github.com/mayaramedeiros)
+
+
+  [![LinkedIn][linkedin-shield]][linkedin-brigida]
+* [Paulo Henrique Correia](https://github.com/PauloHenrique7010)
+
+
+  [![LinkedIn][linkedin-shield]][linkedin-paulo]
+
 
 ## Entregas
 ### Backend
@@ -106,28 +128,6 @@ Além disso, teremos uma tela com a lista do DPOs cadastrados afim de torná-los
 >>> cd server
 >>> npm install
 >>> node index.js
-
-## Integrantes
-* [Gabriel Carvalho](https://github.com/Gamebielo)
-
-
-  [![LinkedIn][linkedin-shield]][linkedin-biel]
-* [Lucas Salvador](https://github.com/LASalvador)
-  
-  
-  [![LinkedIn][linkedin-shield]][linkedin-salva]
-* [Lucas Ribeiro](https://github.com/lrsonnewend)
-
-
-  [![LinkedIn][linkedin-shield]][linkedin-sonne]
-* [Mayara Brígida](https://github.com/mayaramedeiros)
-
-
-  [![LinkedIn][linkedin-shield]][linkedin-brigida]
-* [Paulo Henrique Correia](https://github.com/PauloHenrique7010)
-
-
-  [![LinkedIn][linkedin-shield]][linkedin-paulo]
 
 
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
