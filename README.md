@@ -57,20 +57,20 @@ Além disso, teremos uma tela com a lista do DPOs cadastrados afim de torná-los
    - Criação de projeto react 
    - Adição de biblioteca Material-UI
    - Adição de telas e comportamentos
-    - Tela de Chat
-    - Tela de lista de comunicados
+     - Tela de Chat
+     - Tela de lista de comunicados
 
    **Sprint 2**
    - Tela de chat
-    - Carregamento de mensagens já enviadas
-    - Adição de novas mensagens
-    - Cores diferentes para mensagens de DPO
-    - Modal para adicionar chave(token) de acesso a conversa
+     - Carregamento de mensagens já enviadas
+     - Adição de novas mensagens
+     - Cores diferentes para mensagens de DPO
+     - Modal para adicionar chave(token) de acesso a conversa
    - Tela de lista de comunicados
-    - Carregamento de comunicado abertos
-    - Direcionamento para tela com mensagens do comunicado
+     - Carregamento de comunicado abertos
+     - Direcionamento para tela com mensagens do comunicado
    - Adição de tela de cadastro comunicado
-    - Formulário para cadastramento de comunicado
+     - Formulário para cadastramento de comunicado
   
   **Sprint 3**
    - Tela de Login para DPO
