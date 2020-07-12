@@ -34,7 +34,7 @@ Além disso, teremos uma tela com a lista do DPOs cadastrados afim de torná-los
   **Sprint 2**
    - Adição do Modelo DPO
    - Rotas de DPO (get, post, put e delete);
-    - Crud de DPO
+     - Crud de DPO
    - Rotas de Validação de chave de acesso ao Comunicado
 
   **Sprint 3**
@@ -47,6 +47,7 @@ Além disso, teremos uma tela com a lista do DPOs cadastrados afim de torná-los
   - Adição de criptografia nas mensagens
   - Adição de criptografia para salvar senhas
   - Adição de envio de email ao cadastrar um comunicado
+  
   **Sprint 5**
   - Geração de LOG
   - Atualização de alguns controllers
@@ -56,20 +57,20 @@ Além disso, teremos uma tela com a lista do DPOs cadastrados afim de torná-los
    - Criação de projeto react 
    - Adição de biblioteca Material-UI
    - Adição de telas e comportamentos
-    - Tela de Chat
-    - Tela de lista de comunicados
+     - Tela de Chat
+     - Tela de lista de comunicados
 
    **Sprint 2**
    - Tela de chat
-    - Carregamento de mensagens já enviadas
-    - Adição de novas mensagens
-    - Cores diferentes para mensagens de DPO
-    - Modal para adicionar chave(token) de acesso a conversa
+     - Carregamento de mensagens já enviadas
+     - Adição de novas mensagens
+     - Cores diferentes para mensagens de DPO
+     - Modal para adicionar chave(token) de acesso a conversa
    - Tela de lista de comunicados
-    - Carregamento de comunicado abertos
-    - Direcionamento para tela com mensagens do comunicado
+     - Carregamento de comunicado abertos
+     - Direcionamento para tela com mensagens do comunicado
    - Adição de tela de cadastro comunicado
-    - Formulário para cadastramento de comunicado
+     - Formulário para cadastramento de comunicado
   
   **Sprint 3**
    - Tela de Login para DPO
@@ -80,12 +81,14 @@ Além disso, teremos uma tela com a lista do DPOs cadastrados afim de torná-los
       - Ligação com a API para realizar o cadastro
    - Tela de chat
      - Ligação com a API para validar o chave de acesso gerada
+     
   **Sprint 4** 
-    - Adição de controle de sessão do usuário usando JWT gerado
+   - Adição de controle de sessão do usuário usando JWT gerado
+    
   **Sprint 5**
-    - Criação de landing page
-    - Atualização de rotas
-    - Finalização de cadastro de comunicado
+   - Criação de landing page
+   - Atualização de rotas
+   - Finalização de cadastro de comunicado
 
 ## Tecnologias
 
