@@ -34,7 +34,7 @@ Além disso, teremos uma tela com a lista do DPOs cadastrados afim de torná-los
   **Sprint 2**
    - Adição do Modelo DPO
    - Rotas de DPO (get, post, put e delete);
-    - Crud de DPO
+     - Crud de DPO
    - Rotas de Validação de chave de acesso ao Comunicado
 
   **Sprint 3**
