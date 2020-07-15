@@ -73,6 +73,9 @@ Além disso, teremos uma tela com a lista do DPOs cadastrados afim de torná-los
   **Sprint 5**
   - Geração de LOG
   - Atualização de alguns controllers
+  **Sprint 6**
+  - Adição de Log a nível de S.O
+  - correção de endpoints e serviços
 
 ### FrontEnd
    **Sprint 1**
@@ -111,6 +114,10 @@ Além disso, teremos uma tela com a lista do DPOs cadastrados afim de torná-los
    - Criação de landing page
    - Atualização de rotas
    - Finalização de cadastro de comunicado
+  **Sprint 6**
+   - Adição da tela de Logs 
+   - Correção de rotas
+   - Limpando importações
 
 ## Tecnologias
 
