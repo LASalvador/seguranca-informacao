@@ -129,14 +129,19 @@ Além disso, teremos uma tela com a lista do DPOs cadastrados afim de torná-los
 ## Execução
 ### Execução client
 
->> cd client 
->> npm install
->> npm run start
+> cd client 
+
+> npm install
+
+> npm run start
 
 ### Execução
->>> cd server
->>> npm install
->>> node index.js
+
+> cd server
+
+> npm install
+
+> node index.js
 
 
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
